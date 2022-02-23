@@ -1,38 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "ES6",
-    "module": "esnext",
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "strict": true,
-    "moduleResolution": "node",
-    "noImplicitReturns": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "outDir": "./built/",
-    "sourceMap": true,
-    "removeComments": false,
-    "noImplicitAny": false,
-    "skipLibCheck": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "lib": ["es7", "dom"],
-    "typeRoots": ["node_modules/@types"],
-    "importHelpers": true,
-    "allowJs": true,
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./src/*"],
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["./src/**/*", "./gridsome.*.js"],
-  "exclude": [
-    "content",
-    "node_modules",
-    "static",
-    "src/.temp",
-    "src/assets",
-    "dist"
-  ]
+  "extends": "./.nuxt/tsconfig.json"
 }

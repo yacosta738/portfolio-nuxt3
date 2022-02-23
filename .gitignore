@@ -1,27 +1,10 @@
-*.log
-.cache
-.DS_Store
-src/.temp
 node_modules
-dist
-.env
-.env.*
-static/rss.xml
-yarn.lock
+*.log
+.nuxt
+nuxt.d.ts
+.output
 
-######################
-# IntelliJ
-######################
-.idea/
-*.iml
-*.iws
-*.ipr
-*.ids
-*.orig
-classes/
-out/
-
-######################
-# Visual Studio Code
-######################
-.vscode/
+.idea
+/tests/e2e/videos/
+/tests/e2e/screenshots/
+/.env

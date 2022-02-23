@@ -1,29 +1,13 @@
 module.exports = {
-  darkMode: "class",
-  purge: {
-    content: [
-      "./src/**/*.vue",
-      "./src/**/*.js",
-      "./src/**/*.jsx",
-      "./src/**/*.html",
-      "./src/**/*.pug",
-      "./src/**/*.md",
-      "./docs/**/*.md",
-      "./blog/**/*.md",
-    ],
-    options: {
-      whitelist: [
-        "body",
-        "html",
-        "img",
-        "a",
-        "g-image",
-        "g-image--lazy",
-        "g-image--loaded",
-        "active",
-      ],
-    },
-  },
+  mode: "jit",
+  content: [
+    "./app.vue",
+    "./components/**/*.{vue,js}",
+    "./layouts/**/*.vue",
+    "./nuxt.config.{js,ts}",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+  ],
   theme: {
     extend: {
       spacing: {
