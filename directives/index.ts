@@ -1,1 +1,1 @@
-export * from "~/directives/closable";
+export * from '~/directives/closable'

@@ -1,6 +1,6 @@
-import {defineNuxtPlugin} from '#app'
-import VueDisqus from 'vue-disqus';
+import VueDisqus from 'vue-disqus'
+import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(VueDisqus, {shortname: 'blastkode'})
+  nuxtApp.vueApp.use(VueDisqus, { shortname: 'blastkode' })
 })

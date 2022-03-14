@@ -1,14 +1,24 @@
-<template>
-  <div id="app">
-    <NuxtPage/>
-  </div>
-</template>
-<style lang="css">
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+<script setup lang="ts">
+import 'virtual:svg-icons-register'
+useMeta({
+  title: 'YAP',
+  meta: [
+    { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1' },
+  ],
+  link: [
+    { rel: 'shortcut icon', href: '/favicon.ico' },
+  ],
+})
+const { setPreferredLanguage } = useLocal()
+setPreferredLanguage()
+</script>
 
-#app {
-  @apply min-h-screen font-sans;
-}
+<template>
+  <main class="py-20 px-10 text-center">
+    <NuxtPage />
+  </main>
+</template>
+
+<style>
+@import '~/styles/main.css';
 </style>

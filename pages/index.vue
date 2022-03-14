@@ -1,15 +1,14 @@
 <template>
     <Hero/>
-    <About/>
-    <Jobs/>
+<!--    <About/>-->
+<!--    <Jobs/>-->
 <!--    <projects/>-->
 <!--    <last-articles/>-->
-    <Contact/>
+<!--    <Contact/>-->
 </template>
 
 <script setup lang="ts">
 definePageMeta({
-  title: "Index",
-  layout: "default",
-});
+  layout: 'default',
+})
 </script>

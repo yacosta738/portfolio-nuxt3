@@ -1,18 +1,30 @@
 <template>
   <div class="inline-flex align-middle w-full">
-    <button class="language-button flex justify-center items-center"
-            type="button" @click="toggleDropdown()" ref="btnDropdownRef">
+    <button
+      ref="btnDropdownRef"
+      class="language-button flex justify-center items-center"
+      type="button"
+      @click="toggleDropdown()"
+    >
       <ClientOnly>
-        <country-flag :country="countryFlag('en')" size="normal"/>
+        <country-flag :country="countryFlag('en')" size="normal" />
       </ClientOnly>
     </button>
-    <div v-bind:class="{'hidden': !dropdownPopoverShow, 'block': dropdownPopoverShow}" class="menu-language"
-         v-closable="{ exclude:['btnDropdownRef'], handler: 'onClose'  }" ref="popoverDropdownRef">
+    <div
+      ref="popoverDropdownRef"
+      v-closable="{ exclude:['btnDropdownRef'], handler: 'onClose' }"
+      :class="{'hidden': !dropdownPopoverShow, 'block': dropdownPopoverShow}"
+      class="menu-language"
+    >
       <div class="flex flex-col justify-center items-center">
-        <div class="m-1 cursor-pointer flex justify-around items-start" v-for="locale in localeList" :key="locale"
-             @click="localeChanged(locale)">
+        <div
+          v-for="locale in localeList"
+          :key="locale"
+          class="m-1 cursor-pointer flex justify-around items-start"
+          @click="localeChanged(locale)"
+        >
           <ClientOnly>
-            <country-flag :country="countryFlag(locale)" size="normal"/>
+            <country-flag :country="countryFlag(locale)" size="normal" />
           </ClientOnly>
         </div>
       </div>
@@ -21,51 +33,52 @@
 </template>
 
 <script setup lang="ts">
-import { createPopper } from '@popperjs/core';
-import {localeList, loadLanguageAsync} from "~/mixins/language.mixins";
-import CountryFlag from 'vue-country-flag-next';
-import {ref} from "vue";
+import { createPopper } from '@popperjs/core'
+import CountryFlag from 'vue-country-flag-next' // TODO: remove this dependency
+import { ref } from 'vue'
+import { localeList, loadLanguageAsync } from '~/mixins/language.mixins'
 
 const flag = (locale: string): string => {
   switch (locale) {
     case 'en':
-      return 'gb';
+      return 'gb'
     case 'es':
-      return 'es';
+      return 'es'
     default:
-      return 'gb';
+      return 'gb'
   }
-};
+}
 
-let dropdownPopoverShow: boolean = false;
+let dropdownPopoverShow = false
 
 const countryFlag = (locale: string) => {
-  return flag(locale);
+  return flag(locale)
 }
-const btnDropdownRef = ref(null);
-const popoverDropdownRef = ref(null);
+const btnDropdownRef = ref(null)
+const popoverDropdownRef = ref(null)
 
 const toggleDropdown = () => {
   if (dropdownPopoverShow) {
-    dropdownPopoverShow = false;
-  } else {
-    dropdownPopoverShow = true;
-    const btn = btnDropdownRef.value as HTMLElement;
-    const dropdown = popoverDropdownRef.value as HTMLElement;
+    dropdownPopoverShow = false
+  }
+  else {
+    dropdownPopoverShow = true
+    const btn = btnDropdownRef.value as HTMLElement
+    const dropdown = popoverDropdownRef.value as HTMLElement
     createPopper(btn, dropdown, {
-      placement: "bottom-start"
-    });
+      placement: 'bottom-start',
+    })
   }
 }
 
 const onClose = () => {
-  dropdownPopoverShow = false;
+  dropdownPopoverShow = false
 }
 
 const localeChanged = (locale: string) => {
   loadLanguageAsync(locale).then(toggleDropdown).catch(() => {
-    console.log('Async language fetch failed');
-  });
+    console.log('Async language fetch failed')
+  })
 }
 </script>
 <style lang="scss">

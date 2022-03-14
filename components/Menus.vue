@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import Icones from '@/components/Icones.vue';
 import {addEventToClassName} from '~/util/utilities';
-import {useGeneralStore} from "~/store";
+import {useGeneralStore} from "~/stores";
 import {onMounted} from "vue";
 
 // const ThemeSwitcher = () => import('./ThemeSwitcher.vue');
@@ -60,7 +60,7 @@ onMounted(() => {
 const openSearchBox = () => {
   generalStore.toggleSearchModal();
   generalStore.updateDrawer(false);
-  if (generalStore.searchModal) {
+  if (generalStore.isOpenSearchModal) {
     const searchBox: any = <HTMLInputElement>document.getElementById('search-box');
     if (searchBox) {
       searchBox.autofocus = true;
