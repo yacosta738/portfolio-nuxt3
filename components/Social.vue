@@ -1,0 +1,59 @@
+<template>
+  <Side :show="store.showSide" orientation="left">
+    <ul class="social-links">
+      <li v-for="social in sMedia">
+        <a :href="social.url" target="_blank">
+          <Icones :icon="social.name.toLowerCase()" class="scale-75" />
+        </a>
+      </li>
+    </ul>
+  </Side>
+</template>
+
+<script setup lang="ts">
+import { useGeneralStore } from '~/stores'
+import Icones from '~/components/Icones.vue'
+import Side from '~/components/Side.vue'
+import { socialMedia } from '~/models/configuration'
+const store = useGeneralStore()
+const sMedia = socialMedia
+
+</script>
+
+<style scoped>
+.social-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social-links:after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 90px;
+  margin: 0 auto;
+  background-color: var(--light-slate);
+}
+
+.social-links li:last-of-type {
+  margin-bottom: 20px;
+}
+
+.social-links li a {
+  padding: 2px;
+}
+
+.social-links li a:hover, .social-links li a:focus {
+  transform: translateY(-3px);
+}
+
+.social-links li a svg {
+  width: 20px;
+  height: 20px;
+}
+
+</style>

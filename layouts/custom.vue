@@ -10,7 +10,7 @@
         <transition name="fade" appear>
           <main ref="content" class="flex-grow mt-8 md:mt-20 lg:mt-15">
             <slot />
-<!--            <ScrollTop />-->
+            <ScrollTop />
           </main>
         </transition>
         <transition v-if="aside" name="fade" mode="out-in" appear>
@@ -24,8 +24,8 @@
           </aside>
         </transition>
       </div>
-<!--      <Social />-->
-<!--      <Email />-->
+      <Social />
+      <Email />
       <AppFooter />
     </div>
   </div>

@@ -3,7 +3,7 @@
     <div>
       <Hero />
       <About />
-      <!--    <Jobs/>-->
+      <Jobs />
       <!--    <projects/>-->
       <!--    <last-articles/>-->
       <!--    <Contact/>-->
