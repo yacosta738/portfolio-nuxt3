@@ -18,7 +18,6 @@
           class="order-list lg:space-x-8 space-y-6 lg:space-y-0 lg:flex lg:flex-initial lg:w-auto items-center mt-8 lg:mt-0">
         <li v-for="(menu, i) in generalStore.menus" :key="i">
           <NuxtLink v-if="$route.path === '/' || $route.path === `/en/`" :to="menu.url"
-                    v-scroll-to="menu.vScrollTo" class="close-menu-dummy"
                     data-cypress="projects">{{ menu.name }}
           </NuxtLink>
           <NuxtLink v-else :to="menu.url" class="close-menu-dummy">{{ menu.name }}</NuxtLink>

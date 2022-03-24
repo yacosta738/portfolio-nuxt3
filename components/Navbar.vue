@@ -9,8 +9,8 @@
       </NuxtLink>
       <div class="z-50 block lg:hidden">
         <svg
-          class="ham hamRotate ham7"
           ref="menu-svg"
+          class="ham hamRotate ham7"
           :class="{'active-menu': generalStore.drawer}"
           viewBox="0 0 100 100"
           width="60"
@@ -33,7 +33,6 @@
       <Menus class="hidden lg:block" />
       <div
         v-if="generalStore.drawer"
-        v-closable="{ exclude:['menu-svg'], handler: 'onClose' }"
         :class="{ 'navbar-menu-open':generalStore.drawer, 'navbar-menu-close':!generalStore.drawer}"
         class="navbar-menu z-40 w-64 absolute bg-light-navy top-0 right-0 h-screen flex-grow px-4 py-8 md:pb-0 overflow-y-hidden -mx-14"
       >
@@ -76,7 +75,6 @@ const onClose = () => {
   generalStore.updateDrawer(false)
 }
 
-
 const onScroll = () => {
   const currentScrollPosition = (process.client) ? window.scrollY || document.documentElement.scrollTop : 0
   if (currentScrollPosition < 0 || generalStore.drawer)
@@ -91,6 +89,7 @@ const onScroll = () => {
   showNavbar.value = currentScrollPosition < lastScrollPosition
   scrollDirection = (currentScrollPosition < lastScrollPosition) ? 'UP' : 'DOWN'
   lastScrollPosition = currentScrollPosition
+  console.log({ scrollDirection, lastScrollPosition })
 }
 
 onMounted(() => {

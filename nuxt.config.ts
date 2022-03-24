@@ -10,25 +10,17 @@ export default defineNuxtConfig({
     NOTION_URL: process.env.NOTION_URL,
   },
   build: {
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
-    },
     transpile: ['graphql'],
   },
   buildModules: [
     '@vueuse/nuxt',
-    '@unocss/nuxt',
     '@pinia/nuxt',
     '@intlify/nuxt3',
     // './modules/graphql-codegen-module.ts',
     '@nuxt3/graphql-codegen-module',
     // './modules/apollo-module.ts',
     '@nuxt3/apollo-module',
+    '@nuxtjs/tailwindcss',
     'vue3-notion/nuxt',
   ],
   css: [
@@ -43,20 +35,6 @@ export default defineNuxtConfig({
       // local graphql server, set URL env when build if using serverless or deploying on unknown port
       uri: process.env.URL ? `${process.env.URL}/api/graphql` : 'http://localhost:3000/api/graphql',
     },
-  },
-  unocss: {
-    uno: true,
-    attributify: true,
-    preflight: true,
-    icons: {
-      scale: 1.2,
-    },
-    rules: [
-      ['text-apollo', { color: '#112B49' }],
-    ],
-    shortcuts: [
-      ['btn', 'px-4 py-1 rounded inline-block bg-teal-600 text-white cursor-pointer hover:bg-teal-700 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
-    ],
   },
   vite: {
     server: {

@@ -14,11 +14,13 @@ setPreferredLanguage()
 </script>
 
 <template>
-  <main class="py-20 px-10 text-center">
+  <div id="app">
     <NuxtPage />
-  </main>
+  </div>
 </template>
 
-<style>
-@import '~/styles/main.css';
+<style lang="css">
+#app {
+  @apply min-h-screen font-sans;
+}
 </style>

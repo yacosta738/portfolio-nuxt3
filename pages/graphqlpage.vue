@@ -1,32 +1,34 @@
 <template>
   <div>
-    <div>
-      <h3 text-2xl font-500>
-        Graphql Api
-      </h3>
-
-      <div v-show="jumpLoading">
-        {{ $t('ssrLoading') }}
-      </div>
-      <div v-if="server && server.articles">
-        <ul>
-          <li v-for="article in server.articles" :key="article.id">
-            {{ article.title }}
-          </li>
-        </ul>
-      </div>
-      <div v-else-if="error">
-        {{ error }}
-      </div>
+    <NuxtLayout name="custom">
       <div>
-        <NuxtLink
-          class="btn m-3 text-sm"
-          to="/restful/page-view"
-        >
-          RESTful Api
-        </NuxtLink>
+        <h3 text-2xl font-500>
+          Graphql Api
+        </h3>
+
+        <div v-show="jumpLoading">
+          {{ $t('ssrLoading') }}
+        </div>
+        <div v-if="server && server.articles">
+          <ul>
+            <li v-for="article in server.articles" :key="article.id">
+              {{ article.title }}
+            </li>
+          </ul>
+        </div>
+        <div v-else-if="error">
+          {{ error }}
+        </div>
+        <div>
+          <NuxtLink
+            class="btn m-3 text-sm"
+            to="/restful/page-view"
+          >
+            RESTful Api
+          </NuxtLink>
+        </div>
       </div>
-    </div>
+    </NuxtLayout>
   </div>
 </template>
 

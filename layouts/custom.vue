@@ -3,9 +3,8 @@
     class="content-wrapper bg-background-primary font-sans text-light-slate leading-normal flex flex-col min-h-screen"
     :class="theme"
   >
-<!--    <SearchBox />-->
-<!--    <Loader v-if="generalStore.loading" />-->
-    <div v-if="!generalStore.loading" id="page-wrapper" :class="{'filter blur':generalStore.isOpenSearchModal}">
+    <SearchBox />
+    <div id="page-wrapper" :class="{'filter blur':generalStore.isOpenSearchModal}">
       <Navbar />
       <div class="flex flex-wrap flex-col md:flex-row justify-around">
         <transition name="fade" appear>
@@ -58,6 +57,7 @@ const fetchBrowserLocale = () => {
 }
 
 onMounted(() => {
+  console.log('<<<<<<<<<<<<<<<<<<onMounted>>>>>>>>>>>>>>>>>>')
   if (process.client)
     fetchBrowserLocale()
 })

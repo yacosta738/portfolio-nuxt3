@@ -12,7 +12,6 @@
     </button>
     <div
       ref="popoverDropdownRef"
-      v-closable="{ exclude:['btnDropdownRef'], handler: 'onClose' }"
       :class="{'hidden': !dropdownPopoverShow, 'block': dropdownPopoverShow}"
       class="menu-language"
     >

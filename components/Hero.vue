@@ -22,22 +22,22 @@
 import { onMounted } from 'vue'
 import { email } from '~/models/configuration'
 import { typed } from '~/util/utilities'
-
-onMounted(() => {
-  const startDelay = 500
-  typed('#generalName', {
-    showCursor: false,
-    strings: ['Yuniel Acosta'],
-    disableBackTyping: true,
-    startDelay,
-  })
-  typed('#phrase', {
-    showCursor: false,
-    strings: ['If I cannot do great things, I can do small things in a great way'],
-    disableBackTyping: true,
-    startDelay: startDelay + 2000,
-  })
-})
+//
+// onMounted(() => {
+//   const startDelay = 500
+//   typed('#generalName', {
+//     showCursor: false,
+//     strings: ['Yuniel Acosta'],
+//     disableBackTyping: true,
+//     startDelay,
+//   })
+//   typed('#phrase', {
+//     showCursor: false,
+//     strings: ['If I cannot do great things, I can do small things in a great way'],
+//     disableBackTyping: true,
+//     startDelay: startDelay + 2000,
+//   })
+// })
 
 const myEmail = email
 </script>
