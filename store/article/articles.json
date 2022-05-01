@@ -1,0 +1,170 @@
+{
+  "articles": [
+    {
+      "id": "88406a2a-7758-4735-81d6-1dfe01bb1a82",
+      "date": "2020-04-08",
+      "summary": "By reading this article, I would suppose that you know enough to decide whether you will use GraphQl in your next Django project or not.",
+      "slug": "graphql-in-django-an-overview",
+      "categories": ["develop", "web development"],
+      "authors": [
+        {
+          "id": "525896a1-db96-4352-8ae6-4db8aa1afb97",
+          "firstName": "Yuniel",
+          "lastLame": "Acosta Pérez",
+          "fullName": "Yuniel Acosta Pérez",
+          "profilePhoto": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/92177004-eb15-4976-a1f3-2400298a059d/acosta.png"
+        }
+      ],
+      "timeToRead": 5,
+      "lang": "en",
+      "cover": [
+        {
+          "name": "graphql-in-django-overview.webp",
+          "url": "https://www.notion.so/image/https:%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffb2fe653-6037-4980-92a3-ecc440178141%2Fgraphql-in-django-overview.webp?table=block&id=88406a2a-7758-4735-81d6-1dfe01bb1a82&cache=v2",
+          "rawUrl": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fb2fe653-6037-4980-92a3-ecc440178141/graphql-in-django-overview.webp"
+        }
+      ],
+      "tags": ["python", "django", "graphql", "graphene"],
+      "published": true,
+      "title": "GraphQl In Django - An Overview"
+    },
+    {
+      "id": "69183462-5814-499b-9893-eb2d3869a707",
+      "date": "2020-08-16",
+      "summary": "In this article, I will be giving you brief information about Elasticsearch, its installation, and some examples of usage.",
+      "slug": "building-a-full-text-search-app-using-django-docker-and-elasticsearch",
+      "categories": ["develop"],
+      "authors": [
+        {
+          "id": "525896a1-db96-4352-8ae6-4db8aa1afb97",
+          "firstName": "Yuniel",
+          "lastLame": "Acosta Pérez",
+          "fullName": "Yuniel Acosta Pérez",
+          "profilePhoto": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/92177004-eb15-4976-a1f3-2400298a059d/acosta.png"
+        }
+      ],
+      "timeToRead": 4,
+      "lang": "en",
+      "cover": [
+        {
+          "name": "django-docker-elasticsearch.webp",
+          "url": "https://www.notion.so/image/https:%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F8462e045-5003-40dc-9e59-24c568acc126%2Fdjango-docker-elasticsearch.webp?table=block&id=69183462-5814-499b-9893-eb2d3869a707&cache=v2",
+          "rawUrl": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8462e045-5003-40dc-9e59-24c568acc126/django-docker-elasticsearch.webp"
+        }
+      ],
+      "tags": ["python", "django", "elasticsearch", "docker"],
+      "published": true,
+      "title": "Building a Full-Text Search App Using Django, Docker and Elasticsearch"
+    },
+    {
+      "id": "6fd4e510-bf43-4558-b52b-095ac445d1fa",
+      "date": "2020-09-08",
+      "summary": "This is a really short article, where I will show you how to generate cool avatars from a given string (email, username…) or from your logo using python.",
+      "slug": "fancy-avatars-in-python",
+      "categories": ["develop"],
+      "authors": [
+        {
+          "id": "525896a1-db96-4352-8ae6-4db8aa1afb97",
+          "firstName": "Yuniel",
+          "lastLame": "Acosta Pérez",
+          "fullName": "Yuniel Acosta Pérez",
+          "profilePhoto": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/92177004-eb15-4976-a1f3-2400298a059d/acosta.png"
+        }
+      ],
+      "timeToRead": 5,
+      "lang": "en",
+      "cover": [
+        {
+          "name": "avatars-logo-mine.webp",
+          "url": "https://www.notion.so/image/https:%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fde8d7262-1b07-4bab-aeae-a69a59c30852%2Favatars-logo-mine.webp?table=block&id=6fd4e510-bf43-4558-b52b-095ac445d1fa&cache=v2",
+          "rawUrl": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/de8d7262-1b07-4bab-aeae-a69a59c30852/avatars-logo-mine.webp"
+        }
+      ],
+      "tags": ["python"],
+      "published": true,
+      "title": "The Easiest Way To Generate Fancy Avatars In Python"
+    },
+    {
+      "id": "6ca382f2-dd63-427b-8de6-849a3c9a3b80",
+      "date": "2021-01-03",
+      "summary": "This post aims to show that you can start to use Vue with your Django projects immediately without any sophisticated setup that will take hours to complete.",
+      "slug": "using-vuejs-alongside-django-template",
+      "categories": ["develop"],
+      "authors": [
+        {
+          "id": "525896a1-db96-4352-8ae6-4db8aa1afb97",
+          "firstName": "Yuniel",
+          "lastLame": "Acosta Pérez",
+          "fullName": "Yuniel Acosta Pérez",
+          "profilePhoto": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/92177004-eb15-4976-a1f3-2400298a059d/acosta.png"
+        }
+      ],
+      "timeToRead": 7,
+      "lang": "en",
+      "cover": [
+        {
+          "name": "vue-django.webp",
+          "url": "https://www.notion.so/image/https:%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F360c8017-736f-4057-8a04-d9b5c38a9329%2Fvue-django.webp?table=block&id=6ca382f2-dd63-427b-8de6-849a3c9a3b80&cache=v2",
+          "rawUrl": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/360c8017-736f-4057-8a04-d9b5c38a9329/vue-django.webp"
+        }
+      ],
+      "tags": ["django", "vuejs", "axios"],
+      "published": true,
+      "title": "Using Vue.js alongside Django Template"
+    },
+    {
+      "id": "0c4b0bd6-68c4-49c7-8ecb-a4bf80c332ac",
+      "date": "2021-04-05",
+      "summary": "This is a beginner guide on how to set up a vue.js app running on Vite. I’ll also add and configure ESLint & Prettier for linting and code formatting, set up Tailwind CSS for styling, and finally configure VueX and Vue Router.",
+      "slug": "set-up-vue-app-running-on-vite",
+      "categories": ["develop"],
+      "authors": [
+        {
+          "id": "525896a1-db96-4352-8ae6-4db8aa1afb97",
+          "firstName": "Yuniel",
+          "lastLame": "Acosta Pérez",
+          "fullName": "Yuniel Acosta Pérez",
+          "profilePhoto": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/92177004-eb15-4976-a1f3-2400298a059d/acosta.png"
+        }
+      ],
+      "timeToRead": 2,
+      "lang": "en",
+      "cover": [
+        {
+          "name": "vue-vite.webp",
+          "url": "https://www.notion.so/image/https:%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F608b58c9-e738-40b1-9f9e-98ea7f0c2320%2Fvue-vite.webp?table=block&id=0c4b0bd6-68c4-49c7-8ecb-a4bf80c332ac&cache=v2",
+          "rawUrl": "https://s3-us-west-2.amazonaws.com/secure.notion-static.com/608b58c9-e738-40b1-9f9e-98ea7f0c2320/vue-vite.webp"
+        }
+      ],
+      "tags": [
+        "vuejs",
+        "vitejs",
+        "tailwind-css",
+        "vuex",
+        "vue-router",
+        "eslint"
+      ],
+      "published": true,
+      "title": "Set up a Vue app running on Vite"
+    },
+    {
+      "id": "ae8db981-2dad-45b8-bed5-f868ff961da2",
+      "date": "2022-03-30",
+      "categories": ["web development"],
+      "authors": [
+        {
+          "id": "525896a1-db96-4352-8ae6-4db8aa1afb97",
+          "firstName": "Yuniel",
+          "lastLame": "Acosta Pérez",
+          "fullName": "Yuniel Acosta Pérez",
+          "profilePhoto": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/92177004-eb15-4976-a1f3-2400298a059d/acosta.png"
+        }
+      ],
+      "timeToRead": 1,
+      "lang": "es",
+      "tags": ["python", "vuejs", "vuex"],
+      "published": false,
+      "title": "Hi there!"
+    }
+  ]
+}
