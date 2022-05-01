@@ -1,16 +1,7 @@
-<template>
-  <Side :show="store.showSide" orientation="right">
-    <div class="email-side">
-      <a :href="`mailto:${myEmail}`">{{ myEmail }}</a>
-    </div>
-  </Side>
-</template>
-
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useGeneralStore } from '~/stores'
-import { email } from '~/models/configuration'
-import Side from '~/components/Side.vue'
+import { useGeneralStore } from '../store'
+import { email } from '../models/configuration'
 
 const store = useGeneralStore()
 const myEmail = email
@@ -20,6 +11,14 @@ onMounted(() => {
   console.log(store)
 })
 </script>
+
+<template>
+  <Side :show="store.showSide" orientation="right">
+    <div class="email-side">
+      <a :href="`mailto:${myEmail}`">{{ myEmail }}</a>
+    </div>
+  </Side>
+</template>
 
 <style scoped>
 .email-side {

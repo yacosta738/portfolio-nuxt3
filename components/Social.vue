@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { useGeneralStore } from '../store'
+import { socialMedia } from '../models/configuration'
+
+const store = useGeneralStore()
+const sMedia = socialMedia
+
+</script>
+
 <template>
   <Side :show="store.showSide" orientation="left">
     <ul class="social-links">
@@ -9,16 +18,6 @@
     </ul>
   </Side>
 </template>
-
-<script setup lang="ts">
-import { useGeneralStore } from '~/stores'
-import Icones from '~/components/Icones.vue'
-import Side from '~/components/Side.vue'
-import { socialMedia } from '~/models/configuration'
-const store = useGeneralStore()
-const sMedia = socialMedia
-
-</script>
 
 <style scoped>
 .social-links {

@@ -1,39 +1,6 @@
-<template>
-  <div
-    class="content-wrapper bg-background-primary font-sans text-light-slate leading-normal flex flex-col min-h-screen"
-    :class="theme"
-  >
-    <SearchBox />
-    <div id="page-wrapper" :class="{'filter blur':generalStore.isOpenSearchModal}">
-      <Navbar />
-      <div class="flex flex-wrap flex-col md:flex-row justify-around">
-        <transition name="fade" appear>
-          <main ref="content" class="flex-grow mt-8 md:mt-20 lg:mt-15">
-            <slot />
-            <ScrollTop />
-          </main>
-        </transition>
-        <transition v-if="aside" name="fade" mode="out-in" appear>
-          <aside id="sidebar" class="w-auto md:w-80 mt-2 md:mr-80 md:mt-20 lg:mt-15">
-            <div class="my-2 md:my-16">
-              <span>Hi, I'm an aside section</span>
-              <!--              <recent-post-widget/>-->
-              <!--              <tag-cloud-widget/>-->
-              <!--              <category-widget/>-->
-            </div>
-          </aside>
-        </transition>
-      </div>
-      <Social />
-      <Email />
-      <AppFooter />
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { useGeneralStore } from '~/stores'
+import { useGeneralStore } from '../store'
 
 const generalStore = useGeneralStore()
 const props = defineProps(
@@ -62,6 +29,38 @@ onMounted(() => {
     fetchBrowserLocale()
 })
 </script>
+
+<template>
+  <div
+    class="content-wrapper bg-background-primary font-sans text-light-slate leading-normal flex flex-col min-h-screen"
+    :class="theme"
+  >
+    <SearchBox />
+    <div id="page-wrapper" :class="{'filter blur':generalStore.isOpenSearchModal}">
+      <Navbar />
+      <div class="flex flex-wrap flex-col md:flex-row justify-around">
+        <transition name="fade" appear>
+          <main ref="content" class="flex-grow mt-8 md:mt-20 lg:mt-15">
+            <slot />
+            <ScrollTop />
+          </main>
+        </transition>
+        <transition v-if="aside" name="fade" mode="out-in" appear>
+          <aside id="sidebar" class="w-auto md:w-80 mt-2 md:mr-80 md:mt-20 lg:mt-15">
+            <div class="my-2 md:my-16">
+              <WidgetRecentPost />
+              <WidgetTagCloud />
+              <WidgetCategory />
+            </div>
+          </aside>
+        </transition>
+      </div>
+      <Social />
+      <Email />
+      <AppFooter />
+    </div>
+  </div>
+</template>
 
 <style src="../assets/styles/main.css"/>
 

@@ -1,69 +1,8 @@
-<template>
-  <section id="jobs" class="container styled-jobs-section">
-    <h2 class="numbered-heading">
-      Where I've Worked
-    </h2>
-    <div class="inner">
-      <ul class="styled-tab-list" role="tablist" aria-label="Job tabs">
-        <li v-for="(job, i) in jobs" :key="job.id">
-          <button
-            :id="`tab-${i}`"
-            class="styled-tab-button"
-            :class="{'text-green-500':activeTabId === i}"
-            role="tab"
-            :aria-selected="activeTabId === i ? 'true' : 'false'"
-            :aria-controls="`panel-${i}`"
-            :tabIndex="activeTabId === i ? '0' : '-1'"
-            @click="activeTabId = i"
-            @keyup.up.prevent.stop="(activeTabId - 1 >= 0 )?activeTabId -= 1:activeTabId = jobs.length - 1"
-            @keyup.down.prevent.stop="(activeTabId + 1 >= jobs.length)?activeTabId = 0:activeTabId+=1"
-          >
-            <span>{{ job.company }}</span>
-          </button>
-        </li>
-        <div
-          class="styled-high-light"
-          :style="(isSmallScreen)?`transform: translateX(calc(${activeTabId} * 120px));`:`transform: translateY(calc(${activeTabId} * 42px));`"
-        />
-      </ul>
-      <transition name="fade" mode="out-in">
-        <div>
-          <div
-            v-for="(job, i) in jobs"
-            :id="`panel-${i}`"
-            :key="job.id"
-            class="styled-tab-content"
-            role="tabpanel"
-            :tabIndex="(activeTabId === i)? 0 : -1"
-            :aria-labelledby="`tab-${i}`"
-            :aria-hidden="activeTabId !== i"
-            :hidden="activeTabId !== i"
-          >
-            <h3>
-              <span>{{ job.role }}</span>
-              <span class="company">
-                &nbsp;@&nbsp;
-                <a :href="job.url" class="inline-link">
-                  {{ job.company }}
-                </a>
-              </span>
-            </h3>
-            <p class="range">
-              {{ range(job) }}
-            </p>
-            <div v-html="job.content" />
-          </div>
-        </div>
-      </transition>
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
-import { formatDate, inlineLinks } from '~/util/utilities'
-import Job from '~/models/job'
-import { useJobStore } from '~/stores'
+import { useJobStore } from '../store'
+import Job from '../models/job'
+import { formatDate, inlineLinks } from '../util/utilities'
 
 const store = useJobStore()
 
@@ -135,6 +74,67 @@ onMounted(() => {
   inlineLinks('styled-tab-content')
 })
 </script>
+
+<template>
+  <section id="jobs" class="container styled-jobs-section">
+    <h2 class="numbered-heading">
+      Where I've Worked
+    </h2>
+    <div class="inner">
+      <ul class="styled-tab-list" role="tablist" aria-label="Job tabs">
+        <li v-for="(job, i) in jobs" :key="job.id">
+          <button
+            :id="`tab-${i}`"
+            class="styled-tab-button"
+            :class="{'text-green-500':activeTabId === i}"
+            role="tab"
+            :aria-selected="activeTabId === i ? 'true' : 'false'"
+            :aria-controls="`panel-${i}`"
+            :tabIndex="activeTabId === i ? '0' : '-1'"
+            @click="activeTabId = i"
+            @keyup.up.prevent.stop="(activeTabId - 1 >= 0 )?activeTabId -= 1:activeTabId = jobs.length - 1"
+            @keyup.down.prevent.stop="(activeTabId + 1 >= jobs.length)?activeTabId = 0:activeTabId+=1"
+          >
+            <span>{{ job.company }}</span>
+          </button>
+        </li>
+        <div
+          class="styled-high-light"
+          :style="(isSmallScreen)?`transform: translateX(calc(${activeTabId} * 120px));`:`transform: translateY(calc(${activeTabId} * 42px));`"
+        />
+      </ul>
+      <transition name="fade" mode="out-in">
+        <div>
+          <div
+            v-for="(job, i) in jobs"
+            :id="`panel-${i}`"
+            :key="job.id"
+            class="styled-tab-content"
+            role="tabpanel"
+            :tabIndex="(activeTabId === i)? 0 : -1"
+            :aria-labelledby="`tab-${i}`"
+            :aria-hidden="activeTabId !== i"
+            :hidden="activeTabId !== i"
+          >
+            <h3>
+              <span>{{ job.role }}</span>
+              <span class="company">
+                &nbsp;@&nbsp;
+                <a :href="job.url" class="inline-link">
+                  {{ job.company }}
+                </a>
+              </span>
+            </h3>
+            <p class="range">
+              {{ range(job) }}
+            </p>
+            <div v-html="job.content" />
+          </div>
+        </div>
+      </transition>
+    </div>
+  </section>
+</template>
 
 <style lang="scss" scoped>
 .styled-jobs-section {

@@ -1,3 +1,28 @@
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { useArticleStore } from '../store'
+import { email } from '../models/configuration'
+import { typed } from '../util/utilities'
+
+onMounted(() => {
+  const startDelay = 500
+  typed('#generalName', {
+    showCursor: false,
+    strings: ['Yuniel Acosta'],
+    disableBackTyping: true,
+    startDelay,
+  })
+  typed('#phrase', {
+    showCursor: false,
+    strings: ['If I cannot do great things, I can do small things in a great way'],
+    disableBackTyping: true,
+    startDelay: startDelay + 2000,
+  })
+})
+const articlesStore = useArticleStore()
+const myEmail = email
+</script>
+
 <template>
   <section class="min-h-screen">
     <div class="container mx-auto flex flex-col items-start h-full">
@@ -17,30 +42,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { onMounted } from 'vue'
-import { email } from '~/models/configuration'
-import { typed } from '~/util/utilities'
-//
-// onMounted(() => {
-//   const startDelay = 500
-//   typed('#generalName', {
-//     showCursor: false,
-//     strings: ['Yuniel Acosta'],
-//     disableBackTyping: true,
-//     startDelay,
-//   })
-//   typed('#phrase', {
-//     showCursor: false,
-//     strings: ['If I cannot do great things, I can do small things in a great way'],
-//     disableBackTyping: true,
-//     startDelay: startDelay + 2000,
-//   })
-// })
-
-const myEmail = email
-</script>
 
 <style scoped>
 </style>

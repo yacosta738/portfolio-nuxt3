@@ -1,18 +1,8 @@
-<template>
-  <div class="loader-body" :class="{'opacity-0':!generalStore.loading, 'opacity-100':generalStore.loading}">
-    <div class="loader">
-      <div class="inner one" />
-      <div class="inner two" />
-      <div class="inner three" />
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { scroller } from 'vue-scrollto/src/scrollTo'
 import { onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { useGeneralStore } from '~/stores'
+import { useGeneralStore } from '../store'
 
 const generalStore = useGeneralStore()
 const router = useRouter()
@@ -48,6 +38,16 @@ onUnmounted(() => {
   }
 })
 </script>
+
+<template>
+  <div class="loader-body" :class="{'opacity-0':!generalStore.loading, 'opacity-100':generalStore.loading}">
+    <div class="loader">
+      <div class="inner one" />
+      <div class="inner two" />
+      <div class="inner three" />
+    </div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 .loader-body {

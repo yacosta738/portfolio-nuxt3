@@ -1,3 +1,36 @@
+<script setup lang="ts">
+import {onMounted} from "vue";
+import {useGeneralStore} from "../store";
+import {addEventToClassName} from "../util/utilities";
+
+// const ThemeSwitcher = () => import('./ThemeSwitcher.vue');
+// const LocaleSwitcher = () => import('./LocaleSwitcher.vue');
+
+const generalStore = useGeneralStore();
+
+const closeMenu = (): void => {
+  generalStore.updateDrawer(false);
+  setTimeout(() => {
+    generalStore.updateShowNavbar(true);
+  }, 2000);
+}
+
+onMounted(() => {
+  addEventToClassName('close-menu-dummy', closeMenu);
+});
+
+const openSearchBox = () => {
+  generalStore.toggleSearchModal();
+  generalStore.updateDrawer(false);
+  if (generalStore.isOpenSearchModal) {
+    const searchBox: any = <HTMLInputElement>document.getElementById('search-box');
+    if (searchBox) {
+      searchBox.autofocus = true;
+    }
+  }
+}
+</script>
+
 <template>
   <ul
       class="uppercase tracking-wide font-bold overflow-y-auto origin-top-right w-full block flex-grow lg:space-x-8 space-y-6 lg:space-y-0 lg:flex lg:flex-initial lg:w-auto items-center mt-8 lg:mt-0"
@@ -33,37 +66,3 @@
     </li>
   </ul>
 </template>
-
-<script setup lang="ts">
-import Icones from '@/components/Icones.vue';
-import {addEventToClassName} from '~/util/utilities';
-import {useGeneralStore} from "~/stores";
-import {onMounted} from "vue";
-
-// const ThemeSwitcher = () => import('./ThemeSwitcher.vue');
-const LocaleSwitcher = () => import('./LocaleSwitcher.vue');
-
-const generalStore = useGeneralStore();
-
-const closeMenu = (): void => {
-  generalStore.updateDrawer(false);
-  setTimeout(() => {
-    generalStore.updateShowNavbar(true);
-  }, 2000);
-}
-
-onMounted(() => {
-  addEventToClassName('close-menu-dummy', closeMenu);
-});
-
-const openSearchBox = () => {
-  generalStore.toggleSearchModal();
-  generalStore.updateDrawer(false);
-  if (generalStore.isOpenSearchModal) {
-    const searchBox: any = <HTMLInputElement>document.getElementById('search-box');
-    if (searchBox) {
-      searchBox.autofocus = true;
-    }
-  }
-}
-</script>

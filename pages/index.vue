@@ -1,5 +1,11 @@
+<script setup lang="ts">
+definePageMeta({
+  layout: false,
+})
+</script>
+
 <template>
-  <NuxtLayout name="custom">
+  <NuxtLayout name="default">
     <div>
       <Hero />
       <About />
@@ -10,9 +16,3 @@
     </div>
   </NuxtLayout>
 </template>
-
-<script setup lang="ts">
-definePageMeta({
-  layout: false,
-})
-</script>

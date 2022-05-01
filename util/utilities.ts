@@ -2,8 +2,7 @@ import { format } from 'date-fns'
 import es from 'date-fns/locale/es'
 import en from 'date-fns/locale/en-US'
 import DOMPurify from 'dompurify'
-// eslint-disable-next-line import/default
-import marked from 'marked'
+
 import type { Configuration } from 'ityped'
 import { init } from 'ityped'
 
@@ -96,7 +95,7 @@ export const capitalize = (s: string): string =>
  * @returns {string}
  */
 export const markdownfy = (str: string): string =>
-  isClient() ? DOMPurify.sanitize(marked(str)) : ''
+  isClient() ? DOMPurify.sanitize(str) : ''
 
 export const typed = (
   element: string | Element,

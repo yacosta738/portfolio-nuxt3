@@ -1,3 +1,46 @@
+<script setup lang="ts">
+import Fuse from 'fuse.js'
+import { computed, onMounted, ref, watchEffect } from 'vue'
+import { useGeneralStore } from '../store'
+import type Article from '../models/article'
+
+const generalStore = useGeneralStore()
+const query = ref('')
+const results = ref<Article[]>([])
+let fuse: Fuse<Article> | undefined
+const options = {
+  includeScore: true,
+  keys: ['title', 'summary', 'content'],
+}
+
+const resetSearch = watchEffect(() => {
+  if (!generalStore.isOpenSearchModal)
+    query.value = ''
+})
+
+// get isSmallScreen() {
+// return this.$screen.breakpoint === 'xs' || this.$screen.breakpoint === 'sm';
+// }
+const allArticles = computed(() => {
+  return [] as Article[]
+})
+onMounted(() => {
+  fuse = new Fuse(allArticles.value, options)
+})
+
+const isSmallScreen = computed(() => {
+  // https://reegodev.github.io/vue-screen/guide/configuration/composition-api.html
+  // this.$screen.breakpoint === 'xs' || this.$screen.breakpoint === 'sm';
+  return false
+})
+
+const performSearch = () => {
+  const fuseResults = fuse?.search(query.value)
+  results.value = fuseResults ? fuseResults.map(r => r.item) : []
+}
+
+</script>
+
 <template>
   <div
     v-if="generalStore.isOpenSearchModal"
@@ -28,7 +71,7 @@
       <h3 class="text-center text-2xl md:text-5xl border-b border-green-500 text-lightest-slate mb-10">
         {{ results.length > 0 ? `Search phrase match ${results.length} pages` : `Search Results` }}
       </h3>
-      <div class="overflow-y-auto" v-if="results.length > 0">
+      <div v-if="results.length > 0" class="overflow-y-auto">
         <div
           v-for="article in results"
           :key="article.id"
@@ -51,49 +94,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import Fuse from 'fuse.js'
-import { ref, computed, watchEffect, onMounted } from 'vue'
-import ArticleSummary from '@/components/ArticleSummary.vue'
-import Icones from '@/components/Icones.vue'
-import type Article from '@/models/article'
-import { useGeneralStore } from '~/stores'
-
-const generalStore = useGeneralStore()
-const query = ref('')
-const results = ref<Article[]>([])
-let fuse: Fuse<Article> | undefined
-const options = {
-  includeScore: true,
-  keys: ['title', 'summary', 'content'],
-}
-
-const resetSearch = watchEffect(() => {
-  if (!generalStore.isOpenSearchModal)
-    query.value = ''
-})
-
-// get isSmallScreen() {
-// return this.$screen.breakpoint === 'xs' || this.$screen.breakpoint === 'sm';
-// }
-const allArticles = computed(() => {
-  return [] as Article[]
-})
-onMounted(() => {
-  fuse = new Fuse(allArticles.value, options)
-})
-
-
-const isSmallScreen = computed(() => {
-  // https://reegodev.github.io/vue-screen/guide/configuration/composition-api.html
-  // this.$screen.breakpoint === 'xs' || this.$screen.breakpoint === 'sm';
-  return false
-})
-
-const performSearch = () => {
-  const fuseResults = fuse?.search(query.value)
-  results.value = fuseResults ? fuseResults.map(r => r.item) : []
-}
-
-</script>

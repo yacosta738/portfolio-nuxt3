@@ -1,3 +1,62 @@
+<script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { useGeneralStore } from '../store'
+
+const generalStore = useGeneralStore()
+const scrollDirection = ref('DOWN')
+const lastScrollPosition = ref(0)
+
+// get breakpoint(): string {
+//   return this.$screen?.breakpoint ? this.$screen?.breakpoint : '';
+// }
+//
+// @Watch('breakpoint')
+// changedBreakpoint() {
+//   if (this.isOpen && (this.$screen.breakpoint === 'md' || this.$screen.breakpoint === 'xl')) {
+//     this.$store.commit('toggle');
+//   }
+// }
+
+const showNavbar = computed({
+  get() {
+    return generalStore.showNavbar
+  },
+  set(show: boolean) {
+    generalStore.updateShowNavbar(show)
+  },
+})
+
+const onClose = () => {
+  generalStore.updateDrawer(false)
+}
+
+const onScroll = () => {
+  const currentScrollPosition = (process.client) ? window.scrollY || document.documentElement.scrollTop : 0
+  if (currentScrollPosition < 0 || generalStore.drawer)
+    return
+
+  // const navbar = document.getElementById('acosta-navbar');
+  // // Stop executing this function if the difference between
+  // // current scroll position and last scroll position is less than some offset
+  // if (Math.abs(currentScrollPosition - this.lastScrollPosition) < navbar.offsetHeight) {
+  //   return
+  // }
+  showNavbar.value = currentScrollPosition < lastScrollPosition.value
+  scrollDirection.value = (currentScrollPosition < lastScrollPosition.value) ? 'UP' : 'DOWN'
+  lastScrollPosition.value = currentScrollPosition
+}
+
+onMounted(() => {
+  if (process.client) {
+    window.addEventListener('scroll', onScroll)
+  }
+})
+onBeforeUnmount(() => {
+  if (process.client)
+    window.removeEventListener('scroll', onScroll)
+})
+</script>
+
 <template>
   <header
     class="fixed z-50 w-full"
@@ -41,66 +100,6 @@
     </nav>
   </header>
 </template>
-
-<script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted } from 'vue'
-import { useGeneralStore } from '~/stores'
-import Menus from '~/components/Menus.vue'
-
-const generalStore = useGeneralStore()
-let scrollDirection = 'DOWN'
-let lastScrollPosition = 0
-
-// get breakpoint(): string {
-//   return this.$screen?.breakpoint ? this.$screen?.breakpoint : '';
-// }
-//
-// @Watch('breakpoint')
-// changedBreakpoint() {
-//   if (this.isOpen && (this.$screen.breakpoint === 'md' || this.$screen.breakpoint === 'xl')) {
-//     this.$store.commit('toggle');
-//   }
-// }
-
-const showNavbar = computed({
-  get() {
-    return generalStore.showNavbar
-  },
-  set(show: boolean) {
-    generalStore.updateShowNavbar(show)
-  },
-})
-
-const onClose = () => {
-  generalStore.updateDrawer(false)
-}
-
-const onScroll = () => {
-  const currentScrollPosition = (process.client) ? window.scrollY || document.documentElement.scrollTop : 0
-  if (currentScrollPosition < 0 || generalStore.drawer)
-    return
-
-  // const navbar = document.getElementById('acosta-navbar');
-  // // Stop executing this function if the difference between
-  // // current scroll position and last scroll position is less than some offset
-  // if (Math.abs(currentScrollPosition - this.lastScrollPosition) < navbar.offsetHeight) {
-  //   return
-  // }
-  showNavbar.value = currentScrollPosition < lastScrollPosition
-  scrollDirection = (currentScrollPosition < lastScrollPosition) ? 'UP' : 'DOWN'
-  lastScrollPosition = currentScrollPosition
-  console.log({ scrollDirection, lastScrollPosition })
-}
-
-onMounted(() => {
-  if (process.client)
-    window.addEventListener('scroll', onScroll)
-})
-onBeforeUnmount(() => {
-  if (process.client)
-    window.removeEventListener('scroll', onScroll)
-})
-</script>
 
 <style scoped lang="scss">
 .navbar-menu {

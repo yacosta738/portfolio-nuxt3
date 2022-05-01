@@ -1,7 +1,0 @@
-query Article($title: String) {
-  articles(title: $title) {
-    id
-    title
-    content
-  }
-}
