@@ -1,16 +1,14 @@
 <template>
   <button class="big-button" @click="onClick">
     <slot name="icon">
-      <Icones :icon="icon" />
+      <SvgIcon :name="icon" />
     </slot>
     <slot />
   </button>
 </template>
 
 <script setup lang="ts">
-import Icones from '~/components/Icones.vue'
-
-const props = defineProps({
+defineProps({
   onClick: {
     type: Function,
     required: true,
@@ -21,10 +19,9 @@ const props = defineProps({
   },
   icon: {
     type: String,
+    default: '',
   },
-})
+});
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

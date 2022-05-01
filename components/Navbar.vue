@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { useGeneralStore } from '../store'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { useGeneralStore } from '../store';
 
-const generalStore = useGeneralStore()
-const scrollDirection = ref('DOWN')
-const lastScrollPosition = ref(0)
+const generalStore = useGeneralStore();
+const scrollDirection = ref('DOWN');
+const lastScrollPosition = ref(0);
 
 // get breakpoint(): string {
 //   return this.$screen?.breakpoint ? this.$screen?.breakpoint : '';
@@ -19,21 +19,22 @@ const lastScrollPosition = ref(0)
 
 const showNavbar = computed({
   get() {
-    return generalStore.showNavbar
+    return generalStore.showNavbar;
   },
   set(show: boolean) {
-    generalStore.updateShowNavbar(show)
+    generalStore.updateShowNavbar(show);
   },
-})
+});
 
 const onClose = () => {
-  generalStore.updateDrawer(false)
-}
+  generalStore.updateDrawer(false);
+};
 
 const onScroll = () => {
-  const currentScrollPosition = (process.client) ? window.scrollY || document.documentElement.scrollTop : 0
-  if (currentScrollPosition < 0 || generalStore.drawer)
-    return
+  const currentScrollPosition = process.client
+    ? window.scrollY || document.documentElement.scrollTop
+    : 0;
+  if (currentScrollPosition < 0 || generalStore.drawer) return;
 
   // const navbar = document.getElementById('acosta-navbar');
   // // Stop executing this function if the difference between
@@ -41,36 +42,42 @@ const onScroll = () => {
   // if (Math.abs(currentScrollPosition - this.lastScrollPosition) < navbar.offsetHeight) {
   //   return
   // }
-  showNavbar.value = currentScrollPosition < lastScrollPosition.value
-  scrollDirection.value = (currentScrollPosition < lastScrollPosition.value) ? 'UP' : 'DOWN'
-  lastScrollPosition.value = currentScrollPosition
-}
+  showNavbar.value = currentScrollPosition < lastScrollPosition.value;
+  scrollDirection.value =
+    currentScrollPosition < lastScrollPosition.value ? 'UP' : 'DOWN';
+  lastScrollPosition.value = currentScrollPosition;
+};
 
 onMounted(() => {
   if (process.client) {
-    window.addEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll);
   }
-})
+});
 onBeforeUnmount(() => {
-  if (process.client)
-    window.removeEventListener('scroll', onScroll)
-})
+  if (process.client) window.removeEventListener('scroll', onScroll);
+});
 </script>
 
 <template>
   <header
     class="fixed z-50 w-full"
-    :class="{ 'navbar--hidden': !showNavbar, 'navbar--show':scrollDirection === 'UP' && lastScrollPosition !== 0 }"
+    :class="{
+      'navbar--hidden': !showNavbar,
+      'navbar--show': scrollDirection === 'UP' && lastScrollPosition !== 0,
+    }"
   >
-    <nav id="acosta-navbar" class="relative flex flex-wrap w-full justify-between items-center py-2 md:py-4">
+    <nav
+      id="acosta-navbar"
+      class="relative flex flex-wrap w-full justify-between items-center py-2 md:py-4"
+    >
       <NuxtLink :to="'/'" class="py-0 my-0 border-none">
-        <img src="/logo.svg" class="w-12  py-0 my-0" alt="logo">
+        <img src="/logo.svg" class="w-12 py-0 my-0" alt="logo" />
       </NuxtLink>
       <div class="z-50 block lg:hidden">
         <svg
           ref="menu-svg"
           class="ham hamRotate ham7"
-          :class="{'active-menu': generalStore.drawer}"
+          :class="{ 'active-menu': generalStore.drawer }"
           viewBox="0 0 100 100"
           width="60"
           @click="generalStore.toggle()"
@@ -79,10 +86,7 @@ onBeforeUnmount(() => {
             class="line top"
             d="m 70,33 h -40 c 0,0 -6,1.368796 -6,8.5 0,7.131204 6,8.5013 6,8.5013 l 20,-0.0013"
           />
-          <path
-            class="line middle"
-            d="m 70,50 h -40"
-          />
+          <path class="line middle" d="m 70,50 h -40" />
           <path
             class="line bottom"
             d="m 69.575405,67.073826 h -40 c -5.592752,0 -6.873604,-9.348582 1.371031,-9.348582 8.244634,0 19.053564,21.797129 19.053564,12.274756 l 0,-40"
@@ -92,7 +96,10 @@ onBeforeUnmount(() => {
       <Menus class="hidden lg:block" />
       <div
         v-if="generalStore.drawer"
-        :class="{ 'navbar-menu-open':generalStore.drawer, 'navbar-menu-close':!generalStore.drawer}"
+        :class="{
+          'navbar-menu-open': generalStore.drawer,
+          'navbar-menu-close': !generalStore.drawer,
+        }"
         class="navbar-menu z-40 w-64 absolute bg-light-navy top-0 right-0 h-screen flex-grow px-4 py-8 md:pb-0 overflow-y-hidden -mx-14"
       >
         <Menus />
@@ -170,5 +177,4 @@ onBeforeUnmount(() => {
     stroke-dashoffset: -82px;
   }
 }
-
 </style>

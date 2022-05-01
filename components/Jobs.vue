@@ -1,22 +1,23 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
-import { useJobStore } from '../store'
-import Job from '../models/job'
-import { formatDate, inlineLinks } from '../util/utilities'
+import { computed, onMounted } from 'vue';
+import { useJobStore } from '../store';
+import Job from '../models/job';
+import { formatDate, inlineLinks } from '../util/utilities';
 
-const store = useJobStore()
+const store = useJobStore();
 
 const activeTabId = computed<number>({
   get() {
-    return store.getActiveTabId
+    return store.getActiveTabId;
   },
   set(value) {
-    console.log('set', value)
-    store.setJobActiveTabId(value)
+    console.log('set', value);
+    store.setJobActiveTabId(value);
   },
-})
+});
 const jobs = computed<Job[]>(() => [
-  new Job('gf1fgg121121',
+  new Job(
+    'gf1fgg121121',
     'en',
     'Software Engineer',
     '02-01-2021',
@@ -28,9 +29,10 @@ const jobs = computed<Job[]>(() => [
             <p>
              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium, alias, consequuntur cum cupiditate eius est excepturi facere illo ipsa iusto maiores non quisquam quod sed vel veritatis vitae voluptatum.
             </p>
-            `,
+            `
   ),
-  new Job('jjjjjhhgy766',
+  new Job(
+    'jjjjjhhgy766',
     'en',
     'Software Engineer',
     '02-01-2019',
@@ -42,9 +44,10 @@ const jobs = computed<Job[]>(() => [
             <p>
              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium, alias, consequuntur cum cupiditate eius est excepturi facere illo ipsa iusto maiores non quisquam quod sed vel veritatis vitae voluptatum.
             </p>
-            `,
+            `
   ),
-  new Job('ijfdesd55',
+  new Job(
+    'ijfdesd55',
     'en',
     'Software Engineer',
     '02-01-2018',
@@ -56,51 +59,62 @@ const jobs = computed<Job[]>(() => [
             <p>
              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium, alias, consequuntur cum cupiditate eius est excepturi facere illo ipsa iusto maiores non quisquam quod sed vel veritatis vitae voluptatum.
             </p>
-            `,
+            `
   ),
-
-])
+]);
 
 const isSmallScreen = computed(() => {
   // TODO: use media queries or vue-mq
-  return false
-})
+  return false;
+});
 
 const range = (job, dateFormat = 'MMMM, yyyy', locale = 'en'): string => {
-  return `${formatDate(job.startDate, dateFormat, locale)} - ${job.endDate ? formatDate(job.endDate, dateFormat, locale) : 'Present'}`
-}
+  return `${formatDate(job.startDate, dateFormat, locale)} - ${
+    job.endDate ? formatDate(job.endDate, dateFormat, locale) : 'Present'
+  }`;
+};
 
 onMounted(() => {
-  inlineLinks('styled-tab-content')
-})
+  inlineLinks('styled-tab-content');
+});
 </script>
 
 <template>
   <section id="jobs" class="container styled-jobs-section">
-    <h2 class="numbered-heading">
-      Where I've Worked
-    </h2>
+    <h2 class="numbered-heading">Where I've Worked</h2>
     <div class="inner">
       <ul class="styled-tab-list" role="tablist" aria-label="Job tabs">
         <li v-for="(job, i) in jobs" :key="job.id">
           <button
             :id="`tab-${i}`"
             class="styled-tab-button"
-            :class="{'text-green-500':activeTabId === i}"
+            :class="{ 'text-green-500': activeTabId === i }"
             role="tab"
             :aria-selected="activeTabId === i ? 'true' : 'false'"
             :aria-controls="`panel-${i}`"
             :tabIndex="activeTabId === i ? '0' : '-1'"
             @click="activeTabId = i"
-            @keyup.up.prevent.stop="(activeTabId - 1 >= 0 )?activeTabId -= 1:activeTabId = jobs.length - 1"
-            @keyup.down.prevent.stop="(activeTabId + 1 >= jobs.length)?activeTabId = 0:activeTabId+=1"
+            @keyup.up.prevent.stop="
+              activeTabId - 1 >= 0
+                ? (activeTabId -= 1)
+                : (activeTabId = jobs.length - 1)
+            "
+            @keyup.down.prevent.stop="
+              activeTabId + 1 >= jobs.length
+                ? (activeTabId = 0)
+                : (activeTabId += 1)
+            "
           >
             <span>{{ job.company }}</span>
           </button>
         </li>
         <div
           class="styled-high-light"
-          :style="(isSmallScreen)?`transform: translateX(calc(${activeTabId} * 120px));`:`transform: translateY(calc(${activeTabId} * 42px));`"
+          :style="
+            isSmallScreen
+              ? `transform: translateX(calc(${activeTabId} * 120px));`
+              : `transform: translateY(calc(${activeTabId} * 42px));`
+          "
         />
       </ul>
       <transition name="fade" mode="out-in">
@@ -111,7 +125,7 @@ onMounted(() => {
             :key="job.id"
             class="styled-tab-content"
             role="tabpanel"
-            :tabIndex="(activeTabId === i)? 0 : -1"
+            :tabIndex="activeTabId === i ? 0 : -1"
             :aria-labelledby="`tab-${i}`"
             :aria-hidden="activeTabId !== i"
             :hidden="activeTabId !== i"

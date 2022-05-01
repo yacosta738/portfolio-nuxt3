@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import { useGeneralStore } from '../store'
-import { socialMedia } from '../models/configuration'
+import { useGeneralStore } from '../store';
+import { socialMedia } from '../models/configuration';
 
-const store = useGeneralStore()
-const sMedia = socialMedia
-
+const store = useGeneralStore();
+const sMedia = socialMedia;
 </script>
 
 <template>
   <Side :show="store.showSide" orientation="left">
     <ul class="social-links">
-      <li v-for="social in sMedia">
-        <a :href="social.url" target="_blank">
-          <Icones :icon="social.name.toLowerCase()" class="scale-75" />
+      <li v-for="social in sMedia" :key="social.name">
+        <a :href="social.url" target="_blank" class='my-1.5'>
+          <SvgIcon :name="social.name.toLowerCase()" />
         </a>
       </li>
     </ul>
@@ -46,7 +45,8 @@ const sMedia = socialMedia
   padding: 2px;
 }
 
-.social-links li a:hover, .social-links li a:focus {
+.social-links li a:hover,
+.social-links li a:focus {
   transform: translateY(-3px);
 }
 
@@ -54,5 +54,4 @@ const sMedia = socialMedia
   width: 20px;
   height: 20px;
 }
-
 </style>

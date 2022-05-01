@@ -1,30 +1,30 @@
-import { defineStore } from 'pinia'
-import type Menu from '../../models/menu'
-import { navMenus } from '../../models/configuration'
+import { defineStore } from 'pinia';
+import { navMenus } from '../../models/configuration';
+import type Menu from '../../models/menu';
 
-const DARK = 'dark'
-const LIGHT = 'light'
+const DARK = 'dark';
+const LIGHT = 'light';
 
 const getTheme = (): string => {
   if (process.client && !localStorage.getItem('theme'))
-    localStorage.setItem('theme', DARK)
+    localStorage.setItem('theme', DARK);
 
-  return process.client ? localStorage.getItem('theme') : DARK
-}
+  return process.client ? localStorage.getItem('theme') : DARK;
+};
 
-const getNavMenus = (): Menu[] => navMenus || []
+const getNavMenus = (): Menu[] => navMenus || [];
 
 export interface IGeneralStore {
-  theme: string
-  postId: number
-  drawer: boolean
-  showNavbar: boolean
-  showSide: boolean
-  loading: boolean
-  firstTimeLoading: boolean
-  swStatus: string
-  searchModal: boolean
-  menus: Menu[]
+  theme: string;
+  postId: number;
+  drawer: boolean;
+  showNavbar: boolean;
+  showSide: boolean;
+  loading: boolean;
+  firstTimeLoading: boolean;
+  swStatus: string;
+  searchModal: boolean;
+  menus: Menu[];
 }
 const state = (): IGeneralStore => ({
   theme: getTheme(),
@@ -37,10 +37,11 @@ const state = (): IGeneralStore => ({
   swStatus: 'pending',
   searchModal: false,
   menus: getNavMenus(),
-})
+});
 
 const getters = {
-  getThemeClass: (state: IGeneralStore) => (state.theme === DARK ? 'dark' : 'light'),
+  getThemeClass: (state: IGeneralStore) =>
+    state.theme === DARK ? 'dark' : 'light',
   getTheme: (state: IGeneralStore) => state.theme,
   getPostId: (state: IGeneralStore) => state.postId,
   getDrawer: (state: IGeneralStore) => state.drawer,
@@ -51,74 +52,69 @@ const getters = {
   getSwStatus: (state: IGeneralStore) => state.swStatus,
   isOpenSearchModal: (state: IGeneralStore) => state.searchModal,
   getMenus: (state: IGeneralStore) => state.menus,
-}
+};
 const actions = {
   toggleTheme() {
-    const isDark = this.theme === DARK
-    const message = isDark
-      ? '🌙 Setting dark mode'
-      : '🌞 Setting light mode'
-    console.log(message)
-    const newTheme = isDark ? LIGHT : DARK
+    const isDark = this.theme === DARK;
+    const message = isDark ? '🌙 Setting dark mode' : '🌞 Setting light mode';
+    console.log(message);
+    const newTheme = isDark ? LIGHT : DARK;
 
-    if (process.client)
-      localStorage.setItem('theme', newTheme)
+    if (process.client) localStorage.setItem('theme', newTheme);
 
-    this.theme = newTheme
-    const classToAdd = newTheme
-    const classToRemove = isDark ? LIGHT : DARK
+    this.theme = newTheme;
+    const classToAdd = newTheme;
+    const classToRemove = isDark ? LIGHT : DARK;
     if (process.client) {
-      document.body.classList.add(classToAdd)
-      document.body.classList.remove(classToRemove)
+      document.body.classList.add(classToAdd);
+      document.body.classList.remove(classToRemove);
     }
   },
   changePostId(id) {
-    this.postId = id
+    this.postId = id;
   },
   toggleDrawer() {
-    this.drawer = !this.drawer
+    this.drawer = !this.drawer;
   },
   updateDrawer(drawer) {
-    this.drawer = drawer
+    this.drawer = drawer;
   },
   updateShowNavbar(showNavbar) {
-    this.showNavbar = showNavbar
+    this.showNavbar = showNavbar;
   },
   updateShowSide(showSide) {
-    this.showSide = showSide
+    this.showSide = showSide;
   },
   updateFirstTimeLoading(firstTimeLoading) {
-    this.firstTimeLoading = firstTimeLoading
+    this.firstTimeLoading = firstTimeLoading;
   },
   updateLoading(loading: boolean) {
-    this.loading = loading
+    this.loading = loading;
   },
   swUpdate(status) {
-    this.swStatus = status
+    this.swStatus = status;
   },
   toggleSearchModal() {
-    this.searchModal = !this.searchModal
+    this.searchModal = !this.searchModal;
   },
   updateSearchModal(searchModal: boolean) {
-    this.searchModal = searchModal
+    this.searchModal = searchModal;
   },
   updateMenus(menus: Menu[]) {
-    this.menus = menus
+    this.menus = menus;
   },
   addMenu(menu: Menu) {
-    this.menus.push(menu)
+    this.menus.push(menu);
   },
   removeMenu(menu: Menu) {
-    this.menus = this.menus.filter(m => m.name !== menu.name && m.url !== menu.url,
-    )
+    this.menus = this.menus.filter(
+      m => m.name !== menu.name && m.url !== menu.url
+    );
   },
-}
+};
 
-export const useGeneralStore = defineStore(
-  'generalStore',
-  {
-    state,
-    getters,
-    actions,
-  },
-)
+export const useGeneralStore = defineStore('generalStore', {
+  state,
+  getters,
+  actions,
+});

@@ -1,6 +1,6 @@
-import path from 'path'
-import { defineNuxtConfig } from 'nuxt'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'path';
+import { defineNuxtConfig } from 'nuxt';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 export default defineNuxtConfig({
   app: {
@@ -17,10 +17,7 @@ export default defineNuxtConfig({
     '@intlify/nuxt3',
     'vue3-notion/nuxt',
   ],
-  css: [
-    '@/assets/styles/main.css',
-    'vue3-notion/dist/style.css',
-  ],
+  css: ['@/assets/styles/main.css', 'vue3-notion/dist/style.css'],
   vite: {
     server: {
       watch: {
@@ -38,4 +35,4 @@ export default defineNuxtConfig({
     localeDir: 'locales', // set the `locales` directory at source directory of your Nuxt application
     vueI18n: {},
   },
-})
+});

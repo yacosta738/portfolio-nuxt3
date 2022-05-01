@@ -1,33 +1,30 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
-import { useGeneralStore } from '../store'
+import { computed, onMounted } from 'vue';
+import { useGeneralStore } from '../store';
 
-const generalStore = useGeneralStore()
-const props = defineProps(
-  {
-    aside: {
-      type: Boolean,
-      default: false,
-    },
+const generalStore = useGeneralStore();
+const props = defineProps({
+  aside: {
+    type: Boolean,
+    default: false,
   },
-)
+});
 const theme = computed(() => {
-  return generalStore.theme
-})
+  return generalStore.theme;
+});
 
 const fetchBrowserLocale = () => {
-  const lang: string | null = localStorage?.getItem('lang')
-  const fetchedLocale: string = lang || navigator.language.split('-')[0]
+  const lang: string | null = localStorage?.getItem('lang');
+  const fetchedLocale: string = lang || navigator.language.split('-')[0];
   // this.loadLanguageAsync(fetchedLocale).catch(() => {
   //   console.log('Async language fetch failed');
   // });
-}
+};
 
 onMounted(() => {
-  console.log('<<<<<<<<<<<<<<<<<<onMounted>>>>>>>>>>>>>>>>>>')
-  if (process.client)
-    fetchBrowserLocale()
-})
+  console.log('<<<<<<<<<<<<<<<<<<onMounted>>>>>>>>>>>>>>>>>>');
+  if (process.client) fetchBrowserLocale();
+});
 </script>
 
 <template>
@@ -36,7 +33,10 @@ onMounted(() => {
     :class="theme"
   >
     <SearchBox />
-    <div id="page-wrapper" :class="{'filter blur':generalStore.isOpenSearchModal}">
+    <div
+      id="page-wrapper"
+      :class="{ 'filter blur': generalStore.isOpenSearchModal }"
+    >
       <Navbar />
       <div class="flex flex-wrap flex-col md:flex-row justify-around">
         <transition name="fade" appear>
@@ -46,7 +46,10 @@ onMounted(() => {
           </main>
         </transition>
         <transition v-if="aside" name="fade" mode="out-in" appear>
-          <aside id="sidebar" class="w-auto md:w-80 mt-2 md:mr-80 md:mt-20 lg:mt-15">
+          <aside
+            id="sidebar"
+            class="w-auto md:w-80 mt-2 md:mr-80 md:mt-20 lg:mt-15"
+          >
             <div class="my-2 md:my-16">
               <WidgetRecentPost />
               <WidgetTagCloud />
@@ -62,7 +65,7 @@ onMounted(() => {
   </div>
 </template>
 
-<style src="../assets/styles/main.css"/>
+<style src="../assets/styles/main.css" />
 
 <style>
 /* Fade down */

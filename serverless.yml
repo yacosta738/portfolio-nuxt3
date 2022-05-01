@@ -14,8 +14,6 @@ provider:
   name: aws
   lambdaHashingVersion: 20201221
 
-
-
 package:
   individually: true
 

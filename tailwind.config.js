@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
@@ -26,7 +26,7 @@ module.exports = {
         14: '14px',
       },
       colors: {
-        'background': {
+        background: {
           primary: 'var(--bg-background-primary)',
           secondary: 'var(--bg-background-secondary)',
           tertiary: 'var(--bg-background-tertiary)',
@@ -34,7 +34,7 @@ module.exports = {
           form: 'var(--bg-background-form)',
         },
 
-        'copy': {
+        copy: {
           primary: 'var(--text-copy-primary)',
           secondary: 'var(--text-copy-hover)',
         },
@@ -43,19 +43,19 @@ module.exports = {
           primary: 'var(--border-border-color-primary)',
         },
 
-        'transparent': 'transparent',
+        transparent: 'transparent',
 
-        'black': '#000',
-        'white': '#fff',
+        black: '#000',
+        white: '#fff',
         'dark-navy': '#020c1b',
-        'navy': '#0a192f',
+        navy: '#0a192f',
         'light-navy': '#112240',
         'lightest-navy': '#233554',
-        'slate': '#8892b0',
+        slate: '#8892b0',
         'light-slate': '#a8b2d1',
         'lightest-slate': '#ccd6f6',
 
-        'green': {
+        green: {
           100: '#d5f3ec',
           200: '#b4eee0',
           300: '#98efdb',
@@ -67,7 +67,7 @@ module.exports = {
           900: '#133040',
         },
 
-        'gray': {
+        gray: {
           100: '#f7fafc',
           200: '#edf2f7',
           300: '#e2e8f0',
@@ -93,4 +93,4 @@ module.exports = {
     require('@tailwindcss/line-clamp'),
     require('@tailwindcss/aspect-ratio'),
   ],
-}
+};

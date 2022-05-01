@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useGeneralStore } from '../store'
-import { email } from '../models/configuration'
+import { onMounted } from 'vue';
+import { useGeneralStore } from '../store';
+import { email } from '../models/configuration';
 
-const store = useGeneralStore()
-const myEmail = email
+const store = useGeneralStore();
+const myEmail = email;
 
 onMounted(() => {
-  console.log('Email mounted')
-  console.log(store)
-})
+  console.log('Email mounted');
+  console.log(store);
+});
 </script>
 
 <template>
@@ -46,8 +46,8 @@ onMounted(() => {
   writing-mode: vertical-rl;
 }
 
-.email-side a:hover, .email-side a:focus {
+.email-side a:hover,
+.email-side a:focus {
   transform: translateY(-3px);
 }
-
 </style>

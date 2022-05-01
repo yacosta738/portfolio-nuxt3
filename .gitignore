@@ -9,4 +9,5 @@ dist
 coverage
  ### IDEs ###
  .idea
- .vscode
+ /.vscode/
+/.idea/

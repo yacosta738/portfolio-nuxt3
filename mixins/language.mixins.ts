@@ -1,8 +1,8 @@
-export const localeList: string[] = ['en', 'es']
+export const localeList: string[] = ['en', 'es'];
 // TODO: Add more languages or fix the current one
-export const setI18nLanguage = (lang) => {
+export const setI18nLanguage = lang => {
   // this.$i18n.locale = lang;
-  localStorage.setItem('lang', lang)
+  localStorage.setItem('lang', lang);
   // const route = this.$tp(this.$route.path, lang, true);
   // if (this.$router.currentRoute.path !== route) {
   //     this.$router.push({
@@ -12,10 +12,10 @@ export const setI18nLanguage = (lang) => {
   // if (this.$i18n.locale !== lang) {
   //     this.$i18n.locale = lang;
   // }
-  return lang
-}
+  return lang;
+};
 
-export const loadLanguageAsync = (lang) => {
+export const loadLanguageAsync = lang => {
   // If the same language
   // if (this.$i18n.locale === lang) {
   //     return Promise.resolve(lang);
@@ -35,5 +35,5 @@ export const loadLanguageAsync = (lang) => {
   //     return Promise.resolve(this.setI18nLanguage(lang));
   // });
 
-  return Promise.resolve(lang)
-}
+  return Promise.resolve(lang);
+};

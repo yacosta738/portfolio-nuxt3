@@ -1,46 +1,55 @@
 <script setup lang="ts">
-import { scroller } from 'vue-scrollto/src/scrollTo'
-import { onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
-import { useGeneralStore } from '../store'
+import { scroller } from 'vue-scrollto/src/scrollTo';
+import { onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { useGeneralStore } from '../store';
 
-const generalStore = useGeneralStore()
-const router = useRouter()
-const scrollTo = scroller()
+const generalStore = useGeneralStore();
+const router = useRouter();
+const scrollTo = scroller();
 
 onMounted(() => {
-  const currentRoute = router.currentRoute
+  const currentRoute = router.currentRoute;
   if (process.client) {
-    sessionStorage.setItem('url-to-navigate', JSON.stringify({
-      fullPath: currentRoute.value.fullPath,
-      path: currentRoute.value.path,
-      name: currentRoute.value.name,
-      hash: currentRoute.value.hash,
-      meta: currentRoute.value.meta,
-    }))
+    sessionStorage.setItem(
+      'url-to-navigate',
+      JSON.stringify({
+        fullPath: currentRoute.value.fullPath,
+        path: currentRoute.value.path,
+        name: currentRoute.value.name,
+        hash: currentRoute.value.hash,
+        meta: currentRoute.value.meta,
+      })
+    );
   }
-  generalStore.updateFirstTimeLoading(false)
-})
+  generalStore.updateFirstTimeLoading(false);
+});
 
 onUnmounted(() => {
   if (process.client && sessionStorage.getItem('url-to-navigate')) {
-    const url = sessionStorage.getItem('url-to-navigate')
+    const url = sessionStorage.getItem('url-to-navigate');
     if (url) {
-      const route = JSON.parse(url)
+      const route = JSON.parse(url);
       if (route && route.hash) {
         setTimeout(() => {
-          scrollTo(route.hash)
-          generalStore.updateShowNavbar(true)
-        }, 1000)
+          scrollTo(route.hash);
+          generalStore.updateShowNavbar(true);
+        }, 1000);
       }
     }
-    sessionStorage.removeItem('url-to-navigate')
+    sessionStorage.removeItem('url-to-navigate');
   }
-})
+});
 </script>
 
 <template>
-  <div class="loader-body" :class="{'opacity-0':!generalStore.loading, 'opacity-100':generalStore.loading}">
+  <div
+    class="loader-body"
+    :class="{
+      'opacity-0': !generalStore.loading,
+      'opacity-100': generalStore.loading,
+    }"
+  >
     <div class="loader">
       <div class="inner one" />
       <div class="inner two" />
@@ -58,7 +67,11 @@ onUnmounted(() => {
   right: 0;
   width: 100%;
   height: 100vh;
-  background-image: radial-gradient(circle farthest-corner at center, #112240 0%, #0a192f 100%);
+  background-image: radial-gradient(
+    circle farthest-corner at center,
+    #112240 0%,
+    #0a192f 100%
+  );
   z-index: 99;
   transition: var(--transition);
 }

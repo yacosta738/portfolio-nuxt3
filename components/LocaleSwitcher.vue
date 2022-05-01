@@ -1,51 +1,52 @@
 <script setup lang="ts">
-import { createPopper } from '@popperjs/core'
-import CountryFlag from 'vue-country-flag-next' // TODO: remove this dependency
-import { ref } from 'vue'
-import { loadLanguageAsync } from '../mixins/language.mixins'
+import { createPopper } from '@popperjs/core';
+import CountryFlag from 'vue-country-flag-next'; // TODO: remove this dependency
+import { ref } from 'vue';
+import { loadLanguageAsync } from '../mixins/language.mixins';
 
 const flag = (locale: string): string => {
   switch (locale) {
     case 'en':
-      return 'gb'
+      return 'gb';
     case 'es':
-      return 'es'
+      return 'es';
     default:
-      return 'gb'
+      return 'gb';
   }
-}
+};
 
-let dropdownPopoverShow = false
+let dropdownPopoverShow = false;
 
 const countryFlag = (locale: string) => {
-  return flag(locale)
-}
-const btnDropdownRef = ref(null)
-const popoverDropdownRef = ref(null)
+  return flag(locale);
+};
+const btnDropdownRef = ref(null);
+const popoverDropdownRef = ref(null);
 
 const toggleDropdown = () => {
   if (dropdownPopoverShow) {
-    dropdownPopoverShow = false
-  }
-  else {
-    dropdownPopoverShow = true
-    const btn = btnDropdownRef.value as HTMLElement
-    const dropdown = popoverDropdownRef.value as HTMLElement
+    dropdownPopoverShow = false;
+  } else {
+    dropdownPopoverShow = true;
+    const btn = btnDropdownRef.value as HTMLElement;
+    const dropdown = popoverDropdownRef.value as HTMLElement;
     createPopper(btn, dropdown, {
       placement: 'bottom-start',
-    })
+    });
   }
-}
+};
 
 const onClose = () => {
-  dropdownPopoverShow = false
-}
+  dropdownPopoverShow = false;
+};
 
 const localeChanged = (locale: string) => {
-  loadLanguageAsync(locale).then(toggleDropdown).catch(() => {
-    console.log('Async language fetch failed')
-  })
-}
+  loadLanguageAsync(locale)
+    .then(toggleDropdown)
+    .catch(() => {
+      console.log('Async language fetch failed');
+    });
+};
 </script>
 
 <template>
@@ -62,7 +63,7 @@ const localeChanged = (locale: string) => {
     </button>
     <div
       ref="popoverDropdownRef"
-      :class="{'hidden': !dropdownPopoverShow, 'block': dropdownPopoverShow}"
+      :class="{ hidden: !dropdownPopoverShow, block: dropdownPopoverShow }"
       class="menu-language"
     >
       <div class="flex flex-col justify-center items-center">

@@ -1,22 +1,23 @@
 <template>
   <section id="about" class="container mx-auto">
-    <h2 class="numbered-heading">
-      About Me
-    </h2>
+    <h2 class="numbered-heading">About Me</h2>
     <div class="inner">
       <div class="styled-text">
         <div class="styled-text">
           <p class="mb-2">
-            Software engineer with approximately 5 years working in software development. Proficiency with front-end and
-            back-end technologies. Technology and science enthusiast. I am experienced with Web Application
-            Architecture, Software Design Principles, and Software Design Patterns. Interested in object-oriented
-            programming, design patterns, functional programming, domain-driven design, and microservices. I am a
-            versatile person with wide-ranging skills, eager to learn, and ready to face new and tough challenges in or
-            out of my country.
-
-            Shortly after graduating from Central University “Marta Abreu” Of Las Villas, I joined the development team
-            at Desoft where I work on a wide variety of interesting and meaningful projects daily. I am currently
-            working on Scanntech in the Data Integration team.
+            Software engineer with approximately 5 years working in software
+            development. Proficiency with front-end and back-end technologies.
+            Technology and science enthusiast. I am experienced with Web
+            Application Architecture, Software Design Principles, and Software
+            Design Patterns. Interested in object-oriented programming, design
+            patterns, functional programming, domain-driven design, and
+            microservices. I am a versatile person with wide-ranging skills,
+            eager to learn, and ready to face new and tough challenges in or out
+            of my country. Shortly after graduating from Central University
+            “Marta Abreu” Of Las Villas, I joined the development team at Desoft
+            where I work on a wide variety of interesting and meaningful
+            projects daily. I am currently working on Scanntech in the Data
+            Integration team.
           </p>
 
           <p>Here are a few technologies I've been working with recently:</p>
@@ -29,7 +30,11 @@
       </div>
       <div class="styled-pic">
         <div class="wrapper">
-          <img :src="yacosta.image? yacosta.image : '/me.png'" alt="Yuniel Acosta Pérez" class="img">
+          <img
+            :src="yacosta.image ? yacosta.image : '/me.png'"
+            alt="Yuniel Acosta Pérez"
+            class="img"
+          />
         </div>
       </div>
     </div>
@@ -37,20 +42,27 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
-import { inlineLinks, markdownfy, yearsOfExperience } from '~/util/utilities'
+import { computed, onMounted } from 'vue';
+import { inlineLinks, markdownfy, yearsOfExperience } from '../util/utilities';
 
-const skills: string[] = ['TypeScript', 'HTML & (S)CSS', 'Angular', 'Vue', 'Node.js', 'Spring Boot']
+const skills: string[] = [
+  'TypeScript',
+  'HTML & (S)CSS',
+  'Angular',
+  'Vue',
+  'Node.js',
+  'Spring Boot',
+];
 
 const setInlineLink = () => {
   setTimeout(() => {
-    inlineLinks('styled-text')
-  }, 2000)
-}
+    inlineLinks('styled-text');
+  }, 2000);
+};
 
 onMounted(() => {
-  setInlineLink()
-})
+  setInlineLink();
+});
 
 const yacosta = computed(() => {
   return {
@@ -60,17 +72,16 @@ const yacosta = computed(() => {
     company: 'Desoft',
     email: 'yunielacosta738@gmail.com',
     phone: '+52 1 (614) 827-8982',
-  }
-})
+  };
+});
 
 const markdownfyString = (str: string): string => {
-  return markdownfy(str)
-}
+  return markdownfy(str);
+};
 
 const yearsExperience = (text: string): string => {
-  return yearsOfExperience(text)
-}
-
+  return yearsOfExperience(text);
+};
 </script>
 
 <style scoped lang="scss">
@@ -208,5 +219,4 @@ section {
     width: 70%;
   }
 }
-
 </style>

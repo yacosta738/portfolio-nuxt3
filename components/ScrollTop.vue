@@ -1,36 +1,37 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
-import { useGeneralStore } from '../store'
+import { onMounted, onUnmounted, ref } from 'vue';
+import { useGeneralStore } from '../store';
 
-const showScrollToTop = ref(false)
-const store = useGeneralStore()
+const showScrollToTop = ref(false);
+const store = useGeneralStore();
 const backToTop = () => {
-  window.scrollTo({ top: 0 })
-}
+  window.scrollTo({ top: 0 });
+};
 
 const onScroll = () => {
-  const currentScrollPosition = (process.client) ? window.scrollY || document.documentElement.scrollTop : 0
-  if (currentScrollPosition < 0)
-    return
+  const currentScrollPosition = process.client
+    ? window.scrollY || document.documentElement.scrollTop
+    : 0;
+  if (currentScrollPosition < 0) return;
 
-  showScrollToTop.value = currentScrollPosition > 30
-}
+  showScrollToTop.value = currentScrollPosition > 30;
+};
 
-onMounted(
-  () => {
-    if (process.client)
-      window.addEventListener('scroll', onScroll)
-  },
-)
+onMounted(() => {
+  if (process.client) window.addEventListener('scroll', onScroll);
+});
 
 onUnmounted(() => {
-  if (process.client)
-    window.removeEventListener('scroll', onScroll)
-})
+  if (process.client) window.removeEventListener('scroll', onScroll);
+});
 </script>
 
 <template>
-  <button v-if="store.showSide && showScrollToTop" class="scroll-top" @click="backToTop()">
+  <button
+    v-if="store.showSide && showScrollToTop"
+    class="scroll-top"
+    @click="backToTop()"
+  >
     <svg
       stroke="currentColor"
       fill="currentColor"
@@ -59,7 +60,7 @@ onUnmounted(() => {
   border-radius: 50%;
   line-height: 1;
   font-size: 13px;
-  transition: background-color .2s ease;
+  transition: background-color 0.2s ease;
   @apply flex flex-col justify-center items-center text-center bg-light-navy text-green-500 cursor-pointer z-50;
 }
 </style>
