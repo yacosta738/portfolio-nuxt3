@@ -1,7 +1,7 @@
 import { useI18n } from 'vue-i18n';
 import { useNuxtApp } from '#app';
 export function useLocal() {
-  const { locale } = useI18n();
+  const { locale, t } = useI18n();
 
   const currentLocale = useCookie('locale', {
     maxAge: 20 * 365 * 24 * 60 * 60,
@@ -32,5 +32,6 @@ export function useLocal() {
     setPreferredLanguage,
     setLocale,
     locale,
+    t,
   };
 }

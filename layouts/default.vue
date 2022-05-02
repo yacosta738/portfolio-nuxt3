@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useGeneralStore } from '../store';
 
 const generalStore = useGeneralStore();
-const props = defineProps({
+defineProps({
   aside: {
     type: Boolean,
     default: false,
@@ -11,19 +11,6 @@ const props = defineProps({
 });
 const theme = computed(() => {
   return generalStore.theme;
-});
-
-const fetchBrowserLocale = () => {
-  const lang: string | null = localStorage?.getItem('lang');
-  const fetchedLocale: string = lang || navigator.language.split('-')[0];
-  // this.loadLanguageAsync(fetchedLocale).catch(() => {
-  //   console.log('Async language fetch failed');
-  // });
-};
-
-onMounted(() => {
-  console.log('------------------------- onMounted -------------------------');
-  if (process.client) fetchBrowserLocale();
 });
 </script>
 
@@ -38,7 +25,6 @@ onMounted(() => {
         <transition name="fade" appear>
           <main ref="content" class="flex-grow mt-8 md:mt-20 lg:mt-15">
             <slot />
-            <ScrollTop />
           </main>
         </transition>
       </div>

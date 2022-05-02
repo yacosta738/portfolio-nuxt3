@@ -438,31 +438,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/carbon@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "@iconify-json/carbon@npm:1.1.3"
-  dependencies:
-    "@iconify/types": ^1.0.12
-  checksum: 86bbfea18e1ec0f6d05c83095d2c51e15ccb5e9c5e60177a8e46a8e30d59d3a84acfd3b4d84515ccb3376366cc279070e46dc74826dec016b5d78cdbc9b45a61
-  languageName: node
-  linkType: hard
-
-"@iconify-json/twemoji@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "@iconify-json/twemoji@npm:1.1.3"
-  dependencies:
-    "@iconify/types": ^1.0.12
-  checksum: 946f3375bf459c6aebc0440dc54d1dd7bb0449ca4e94873171ec32d9f6f77cdf9cdbface1ce00e4acf0b83ad2e80012710474e78a43df83d29e9f669897d7ab7
-  languageName: node
-  linkType: hard
-
-"@iconify/types@npm:^1.0.12":
-  version: 1.1.0
-  resolution: "@iconify/types@npm:1.1.0"
-  checksum: beffcdbf14e879ff74e79ac29ea0f4f4874f9df632f1994d97395b3f05cbeebaf10f1abc73cf850dc7444924cd57ed92e0e2ca55bacfe3374eff7542d489fbd0
-  languageName: node
-  linkType: hard
-
 "@intlify/bundle-utils@npm:next":
   version: 3.0.0
   resolution: "@intlify/bundle-utils@npm:3.0.0"
@@ -941,13 +916,6 @@ __metadata:
   peerDependencies:
     pinia: ~2.0.9
   checksum: 033baf1a9f7e9e9e2ad67de513a3f1def3068e2410e74416258bbdda261083ebe51b0233bdb14de47e048e77e3bc9fcf3b1d0b1ac7cc752a2642c5706f72b888
-  languageName: node
-  linkType: hard
-
-"@popperjs/core@npm:^2.11.5":
-  version: 2.11.5
-  resolution: "@popperjs/core@npm:2.11.5"
-  checksum: fd7f9dca3fb716d7426332b6ee283f88d2724c0ab342fb678865a640bad403dfb9eeebd8204a406986162f7e2b33394f104320008b74d0e9066d7322f70ea35d
   languageName: node
   linkType: hard
 
@@ -9435,6 +9403,45 @@ __metadata:
   languageName: node
   linkType: hard
 
+"portfolio@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "portfolio@workspace:."
+  dependencies:
+    "@envelop/core": ^2.3.1
+    "@intlify/nuxt3": ^0.2.1
+    "@nuxtjs/tailwindcss": ^5.0.3
+    "@pinia/nuxt": ^0.1.8
+    "@sxzz/eslint-config": ^2.1.1
+    "@tailwindcss/aspect-ratio": 0.4.0
+    "@tailwindcss/forms": 0.5.0
+    "@tailwindcss/line-clamp": ^0.4.0
+    "@tailwindcss/typography": 0.5.2
+    "@vueuse/nuxt": ^8.3.1
+    c8: ^7.11.2
+    cross-env: ^7.0.3
+    date-fns: ^2.28.0
+    dompurify: ^2.3.6
+    eslint: ^8.14.0
+    fuse.js: ^6.5.3
+    ityped: ^1.0.3
+    nuxt: 3.0.0-rc.1
+    pinia: ^2.0.13
+    reflect-metadata: ^0.1.13
+    sass: ^1.51.0
+    serverless: ^3.16.0
+    serverless-domain-manager: ^6.0.3
+    tailwindcss: ^3.0.24
+    type-graphql: ^1.1.1
+    typescript: ^4.6.4
+    unenv: ^0.4.6
+    vite-plugin-svg-icons: ^2.0.1
+    vitest: ^0.10.0
+    vue-disqus: ^4.0.1
+    vue-scrollto: ^2.20.0
+    vue3-notion: ^0.1.28
+  languageName: unknown
+  linkType: soft
+
 "posix-character-classes@npm:^0.1.0":
   version: 0.1.1
   resolution: "posix-character-classes@npm:0.1.1"
@@ -10615,49 +10622,6 @@ __metadata:
   checksum: eb04eb9b87b30517308cb41018d57a23976f42b269c3229e4124746d3136a77aa16ba8b891a3fa571931dd72419eea40642a334835fe4f33161fea30d0b803f7
   languageName: node
   linkType: hard
-
-"root-workspace-0b6124@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "root-workspace-0b6124@workspace:."
-  dependencies:
-    "@envelop/core": ^2.3.1
-    "@iconify-json/carbon": ^1.1.3
-    "@iconify-json/twemoji": ^1.1.3
-    "@intlify/nuxt3": ^0.2.1
-    "@nuxtjs/tailwindcss": ^5.0.3
-    "@pinia/nuxt": ^0.1.8
-    "@popperjs/core": ^2.11.5
-    "@sxzz/eslint-config": ^2.1.1
-    "@tailwindcss/aspect-ratio": 0.4.0
-    "@tailwindcss/forms": 0.5.0
-    "@tailwindcss/line-clamp": ^0.4.0
-    "@tailwindcss/typography": 0.5.2
-    "@vueuse/nuxt": ^8.3.1
-    c8: ^7.11.2
-    cross-env: ^7.0.3
-    date-fns: ^2.28.0
-    dompurify: ^2.3.6
-    eslint: ^8.14.0
-    fuse.js: ^6.5.3
-    ityped: ^1.0.3
-    nuxt: 3.0.0-rc.1
-    pinia: ^2.0.13
-    reflect-metadata: ^0.1.13
-    sass: ^1.51.0
-    serverless: ^3.16.0
-    serverless-domain-manager: ^6.0.3
-    tailwindcss: ^3.0.24
-    type-graphql: ^1.1.1
-    typescript: ^4.6.4
-    unenv: ^0.4.6
-    vite-plugin-svg-icons: ^2.0.1
-    vitest: ^0.10.0
-    vue-country-flag-next: ^2.3.2
-    vue-disqus: ^4.0.1
-    vue-scrollto: ^2.20.0
-    vue3-notion: ^0.1.28
-  languageName: unknown
-  linkType: soft
 
 "run-async@npm:^2.4.0":
   version: 2.4.1
@@ -12691,15 +12655,6 @@ __metadata:
   dependencies:
     bundle-runner: ^0.0.1
   checksum: 6ef21f019e2b415554dfc1c4ba554a39248a7d8107001de4a3637098787be06cf9784273ec997ee7e2a348949225d2ee534e5523ca8ec9c981e8d7e3965228d0
-  languageName: node
-  linkType: hard
-
-"vue-country-flag-next@npm:^2.3.2":
-  version: 2.3.2
-  resolution: "vue-country-flag-next@npm:2.3.2"
-  peerDependencies:
-    vue: ^3.0.0
-  checksum: 20a432e8db60415c16df54d65476e70100c6ec4f9f42ae1b7943cea49472b77afdf0fe807d14959aafc123955851c604bc4c51b914dad84513a4b1c5a66e7add
   languageName: node
   linkType: hard
 

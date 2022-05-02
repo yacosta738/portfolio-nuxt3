@@ -27,31 +27,31 @@ export const socialMedia: SocialMedia[] = [
 export const navMenus: Menu[] = [
   {
     name: 'about',
-    url: '/#about',
+    url: '#about',
     dataCypress: 'about',
     vScrollTo: '#about',
   },
   {
     name: 'experience',
-    url: '/#jobs',
+    url: '#jobs',
     dataCypress: 'jobs',
     vScrollTo: '#jobs',
   },
   {
     name: 'work',
-    url: '/#projects',
+    url: '#projects',
     dataCypress: 'projects',
     vScrollTo: '#projects',
   },
   {
     name: 'last-articles',
-    url: '/#last3articles',
+    url: '#last3articles',
     dataCypress: 'last3articles',
     vScrollTo: '#plast3articles',
   },
   {
     name: 'contact',
-    url: '/#contact',
+    url: '#contact',
     dataCypress: 'contact',
     vScrollTo: '#contact',
   },

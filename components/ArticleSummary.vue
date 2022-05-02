@@ -13,8 +13,8 @@
     <PostHeader v-if="!hidePostHeaderInSmallScreen" :article="article" />
     <div class="flex flex-col md:flex-row mb-16">
       <img
-        v-if="article.cover"
-        :alt="article.cover.name"
+        v-if="article.cover && article.cover.length > 0"
+        :alt="article.cover[0].name"
         class="object-cover md:w-1/3 border border-green-500 md:mr-5"
         src="https://bunkerdb.com/blog/wp-content/uploads/2020/07/Low-code-No-code.jpg"
       />
@@ -31,9 +31,9 @@
 
 <script setup lang="ts">
 import 'reflect-metadata';
-import Article from '@/models/article';
+import Article from '../models/article';
 
-const props = defineProps({
+defineProps({
   article: {
     type: Article,
     required: true,

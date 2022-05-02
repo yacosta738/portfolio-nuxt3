@@ -54,13 +54,14 @@ const closeMenu = (): void => {
       >
         <li v-for="(menu, i) in generalStore.menus" :key="i">
           <NuxtLink
-            v-if="$route.path === '/' || $route.path === `/en/`"
-            :to="menu.url"
-            data-cypress="projects"
-            >{{ menu.name }}
-          </NuxtLink>
-          <NuxtLink v-else :to="menu.url" class="close-menu-dummy"
-            >{{ menu.name }}
+            :to="
+              menu.url.startsWith('#')
+                ? { name: 'index', hash: menu.url }
+                : menu.url
+            "
+            class="close-menu-dummy"
+          >
+            {{ menu.name }}
           </NuxtLink>
         </li>
       </ol>
@@ -73,7 +74,8 @@ const closeMenu = (): void => {
         to="/files/yuniel_acosta_cv.pdf"
         target="_blank"
         class="resume-button"
-        >Resume
+        >
+        {{ $t('resume') }}
       </NuxtLink>
     </li>
   </ul>
@@ -81,6 +83,8 @@ const closeMenu = (): void => {
 
 <style lang="scss" scoped>
 .menu-list {
-  @apply uppercase tracking-wide font-bold overflow-y-auto origin-top-right w-full block flex-grow lg:space-x-8 space-y-6 lg:space-y-0 lg:flex lg:flex-initial lg:w-auto items-center mt-8 lg:mt-0;
+  @apply uppercase tracking-wide font-bold overflow-y-auto origin-top-right w-full
+  block flex-grow lg:space-x-8 space-y-6 lg:space-y-0 lg:flex lg:flex-initial
+  lg:w-auto items-center mt-8 lg:mt-0;
 }
 </style>

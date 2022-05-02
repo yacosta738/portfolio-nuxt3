@@ -5,6 +5,7 @@ import Article from '../../models/article';
 import type { IArticle } from '../../models/article';
 import type { ITag } from '../../models/tag';
 import type { ICategory } from '../../models/category';
+// import { useRuntimeConfig } from '#app';
 
 export interface IArticleStore {
   articles: IArticle[];
@@ -15,6 +16,7 @@ const state = (): IArticleStore => ({
   articles: [],
   message: '',
 });
+// const config = useRuntimeConfig();
 
 const getters = {
   getMessage: (state: IArticleStore) => state.message,
@@ -94,7 +96,7 @@ const actions = {
     // const data = await getPageTable(config.PAGE_ID, config.NOTION_URL)
 
     const data = await getPageTable(
-      'f5bb3d5996604dee8b852ecbe73c1b3b',
+      'b65c961583434442857c502b2cc2ab4c',
       'https://notion-cms.yunielacosta738.workers.dev/v1'
     );
 
@@ -110,7 +112,7 @@ const actions = {
     this.articles = articles;
   },
 };
-// const config = useRuntimeConfig()
+
 export const useArticleStore = defineStore('articleStore', {
   state,
   getters,
