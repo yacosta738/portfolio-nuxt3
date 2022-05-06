@@ -929,13 +929,13 @@ __metadata:
   linkType: hard
 
 "@serverless/utils@npm:^6.0.3":
-  version: 6.0.3
-  resolution: "@serverless/utils@npm:6.0.3"
+  version: 6.3.0
+  resolution: "@serverless/utils@npm:6.3.0"
   dependencies:
     archive-type: ^4.0.0
     chalk: ^4.1.2
     ci-info: ^3.3.0
-    cli-progress-footer: ^2.3.0
+    cli-progress-footer: ^2.3.1
     content-disposition: ^0.5.4
     d: ^1.0.1
     decompress: ^4.2.1
@@ -946,7 +946,7 @@ __metadata:
     filenamify: ^4.3.0
     get-stream: ^6.0.1
     got: ^11.8.3
-    inquirer: ^8.2.0
+    inquirer: ^8.2.4
     js-yaml: ^4.1.0
     jwt-decode: ^3.1.2
     lodash: ^4.17.21
@@ -955,13 +955,16 @@ __metadata:
     make-dir: ^3.1.0
     memoizee: ^0.4.15
     ncjsm: ^4.3.0
+    node-fetch: ^2.6.7
+    open: ^7.4.2
     p-event: ^4.2.0
     supports-color: ^8.1.1
+    timers-ext: ^0.1.7
     type: ^2.6.0
     uni-global: ^1.0.0
     uuid: ^8.3.2
     write-file-atomic: ^4.0.1
-  checksum: 1f1e4e88174a37d9fb3f7577746ef6326f529f76c8f4963ba11490b59c06716f2504d4df3963274bbbabf278e2d86eb84b9eea7bc34f4bf7d5385000a433594d
+  checksum: 3d29c3ad12f3fdeae0160f902e549a8316637bcd9f55b34e8c67e9cdd90bddaa42f27b1f51a845ae1716369b835557ff60e053bc39aa86c67e3bd21857761b94
   languageName: node
   linkType: hard
 
@@ -2645,7 +2648,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli-progress-footer@npm:^2.3.0, cli-progress-footer@npm:^2.3.1":
+"cli-progress-footer@npm:^2.3.1":
   version: 2.3.1
   resolution: "cli-progress-footer@npm:2.3.1"
   dependencies:
@@ -3204,9 +3207,9 @@ __metadata:
   linkType: hard
 
 "dayjs@npm:^1.11.1":
-  version: 1.11.1
-  resolution: "dayjs@npm:1.11.1"
-  checksum: d5fefd79935f64a3c262e67af7ebeca180bc402b3e99be4e12d20b6d438af3f86d507ba1cbaff95dc0b4e67f1067cea3eaf37b6b74f5494fdd4a6a2909514cd1
+  version: 1.11.2
+  resolution: "dayjs@npm:1.11.2"
+  checksum: 78f8bd04a9e5f5554aa06eacda65a7d59e162d39f621a46fd34fb3b51367c3662426d86b4e2f4ac535f81e0c4d5af3e8a83b37e672412eb556267d726c61f8f3
   languageName: node
   linkType: hard
 
@@ -5793,7 +5796,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inquirer@npm:^8.2.0":
+"inquirer@npm:^8.2.4":
   version: 8.2.4
   resolution: "inquirer@npm:8.2.4"
   dependencies:
@@ -10673,9 +10676,9 @@ __metadata:
   linkType: hard
 
 "ufo@npm:^0.8.3":
-  version: 0.8.3
-  resolution: "ufo@npm:0.8.3"
-  checksum: 7ea20e9d0fbd92b3310de4b020919f0a0542db60a6787ccecf232285d55795ddc0ea482b04d6c07cac60367a294aee705d888999867a5c3c69e47ed8d0ae3009
+  version: 0.8.4
+  resolution: "ufo@npm:0.8.4"
+  checksum: a2ebef6f64b9cc4114fc65405837eeb83eb8975edd6d54c7f37abb6905da6fd1f63524e4a02c8b087e7b0b3db6e6f4f798a3d86a96500410ff590b405f807dc9
   languageName: node
   linkType: hard
 
