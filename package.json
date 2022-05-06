@@ -8,6 +8,7 @@
   "scripts": {
     "build": "nuxi build",
     "build:sls": "cross-env NITRO_PRESET=lambda nuxi build",
+    "generate": "nuxi generate",
     "deploy": "serverless deploy",
     "domain": "serverless create_domain",
     "dev": "nuxi dev",
