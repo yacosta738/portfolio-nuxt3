@@ -1,15 +1,15 @@
 export interface IMenu {
-  name?: string;
-  url?: string;
+  name: string;
+  title: string;
+  hash: string;
   dataCypress?: string;
-  vScrollTo?: string;
 }
 
 export default class Menu implements IMenu {
   constructor(
-    public name?: string,
-    public url?: string,
-    public dataCypress?: string,
-    public vScrollTo?: string
+    public name: string,
+    public title: string,
+    public hash: string,
+    public dataCypress?: string
   ) {}
 }

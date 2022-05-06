@@ -102,15 +102,3 @@ export const typed = (
 
   if (elementNODE) init(elementNODE, config);
 };
-
-export const onClickOutside = (event, id: string, func: Function) => {
-  let target = event.target;
-  // check if click is outside of dropdown menu and close it
-  while (target) {
-    if (target.id === id) {
-      return;
-    }
-    target = target.parentNode;
-  }
-  func();
-};

@@ -6,8 +6,8 @@ export default defineNuxtConfig({
   app: {
     // cdnURL: 'https://d17a2275ko4nj4.cloudfront.net', // upload .output/server/public to cdn when using serverless
   },
-  privateRuntimeConfig: {
-    PAGE_ID: process.env.PAGE_ID,
+  publicRuntimeConfig: {
+    BLOG_PAGE_ID: process.env.BLOG_PAGE_ID,
     NOTION_URL: process.env.NOTION_URL,
   },
   modules: ['@nuxtjs/tailwindcss'],
@@ -18,6 +18,9 @@ export default defineNuxtConfig({
     'vue3-notion/nuxt',
   ],
   css: ['@/assets/styles/main.css', 'vue3-notion/dist/style.css'],
+  vueuse: {
+    ssrHandlers: true,
+  },
   vite: {
     server: {
       watch: {

@@ -5,7 +5,7 @@ import Article from '../../models/article';
 import type { IArticle } from '../../models/article';
 import type { ITag } from '../../models/tag';
 import type { ICategory } from '../../models/category';
-// import { useRuntimeConfig } from '#app';
+import { useRuntimeConfig } from '#app';
 
 export interface IArticleStore {
   articles: IArticle[];
@@ -16,7 +16,6 @@ const state = (): IArticleStore => ({
   articles: [],
   message: '',
 });
-// const config = useRuntimeConfig();
 
 const getters = {
   getMessage: (state: IArticleStore) => state.message,
@@ -90,18 +89,13 @@ const actions = {
     this.message = message;
   },
   async fetchArticles() {
-    // console.log('-------------------------------------------------------')
-    // console.log({ page: config.PAGE_ID, notion: config.NOTION_URL })
-    // console.log('-------------------------------------------------------')
-    // const data = await getPageTable(config.PAGE_ID, config.NOTION_URL)
-
-    const data = await getPageTable(
-      'b65c961583434442857c502b2cc2ab4c',
-      'https://notion-cms.yunielacosta738.workers.dev/v1'
+    const config = useRuntimeConfig();
+    const { data } = await useAsyncData('notion', () =>
+      getPageTable(config.BLOG_PAGE_ID, config.NOTION_URL)
     );
 
-    if (data) {
-      this.articles = (data as Array<any>)
+    if (data.value) {
+      this.articles = (data.value as Array<any>)
         .map(post => new Article(post))
         .filter(post => post.published)
         .sort((a, b) => compareAsc(new Date(a.date), new Date(b.date)));

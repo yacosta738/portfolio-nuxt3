@@ -18,17 +18,21 @@
       </button>
 
       <!-- Dropdown menu -->
-      <div v-show="show" class="menu-language">
+      <div
+        v-show="show"
+        ref="langMenu"
+        class="menu-language"
+        @click="show = !show"
+      >
         <slot></slot>
       </div>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue';
-import { onClickOutside } from '../util/utilities';
-
-const props = defineProps({
+import { ref } from 'vue';
+import { onClickOutside } from '@vueuse/core';
+defineProps({
   id: {
     type: String,
     required: true,
@@ -44,24 +48,10 @@ const props = defineProps({
 });
 
 const show = ref(false);
+const langMenu = ref(null);
 
-const onClick = event =>
-  onClickOutside(event, props.id, () => {
-    show.value = false;
-  });
-
-onMounted(() => {
-  if (process.client) {
-    document.addEventListener('click', onClick);
-    document.addEventListener('touchstart', onClick);
-  }
-});
-
-onUnmounted(() => {
-  if (process.client) {
-    document.removeEventListener('click', onClick);
-    document.removeEventListener('touchstart', onClick);
-  }
+onClickOutside(langMenu, () => {
+  show.value = false;
 });
 </script>
 

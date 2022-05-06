@@ -30,7 +30,7 @@ const closeMenu = (): void => {
 <template>
   <ul
     class="menu-list"
-    :class="generalStore.drawer ? 'block' : 'hidden'"
+    :class="generalStore.getDrawer ? 'block' : 'hidden'"
     data-cypress="menu"
   >
     <li class="mb-6 lg:mb-0">
@@ -54,14 +54,10 @@ const closeMenu = (): void => {
       >
         <li v-for="(menu, i) in generalStore.menus" :key="i">
           <NuxtLink
-            :to="
-              menu.url.startsWith('#')
-                ? { name: 'index', hash: menu.url }
-                : menu.url
-            "
+            :to="{ name: menu.name, hash: menu.hash }"
             class="close-menu-dummy"
           >
-            {{ menu.name }}
+            {{ $t(menu.title) }}
           </NuxtLink>
         </li>
       </ol>
@@ -74,7 +70,7 @@ const closeMenu = (): void => {
         to="/files/yuniel_acosta_cv.pdf"
         target="_blank"
         class="resume-button"
-        >
+      >
         {{ $t('resume') }}
       </NuxtLink>
     </li>

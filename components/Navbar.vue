@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import {
+  breakpointsTailwind,
+  onClickOutside,
+  useBreakpoints,
+} from '@vueuse/core';
 import { useGeneralStore } from '../store';
 
 const generalStore = useGeneralStore();
 const scrollDirection = ref('DOWN');
 const lastScrollPosition = ref(0);
 
-// get breakpoint(): string {
-//   return this.$screen?.breakpoint ? this.$screen?.breakpoint : '';
-// }
-//
-// @Watch('breakpoint')
-// changedBreakpoint() {
-//   if (this.isOpen && (this.$screen.breakpoint === 'md' || this.$screen.breakpoint === 'xl')) {
-//     this.$store.commit('toggle');
-//   }
-// }
+const breakpoints = useBreakpoints(breakpointsTailwind);
+
+const mdAndLarger = breakpoints.greater('md');
 
 const showNavbar = computed({
   get() {
@@ -25,10 +23,11 @@ const showNavbar = computed({
     generalStore.updateShowNavbar(show);
   },
 });
-
-const onClose = () => {
-  generalStore.updateDrawer(false);
-};
+watch(mdAndLarger, () => {
+  if (generalStore.getDrawer && mdAndLarger.value) {
+    generalStore.toggleDrawer();
+  }
+});
 
 const onScroll = () => {
   const currentScrollPosition = process.client
@@ -36,12 +35,6 @@ const onScroll = () => {
     : 0;
   if (currentScrollPosition < 0 || generalStore.drawer) return;
 
-  // const navbar = document.getElementById('acosta-navbar');
-  // // Stop executing this function if the difference between
-  // // current scroll position and last scroll position is less than some offset
-  // if (Math.abs(currentScrollPosition - this.lastScrollPosition) < navbar.offsetHeight) {
-  //   return
-  // }
   showNavbar.value = currentScrollPosition < lastScrollPosition.value;
   scrollDirection.value =
     currentScrollPosition < lastScrollPosition.value ? 'UP' : 'DOWN';
@@ -55,6 +48,12 @@ onMounted(() => {
 });
 onBeforeUnmount(() => {
   if (process.client) window.removeEventListener('scroll', onScroll);
+});
+
+const navMenu = ref(null);
+
+onClickOutside(navMenu, () => {
+  generalStore.updateDrawer(false);
 });
 </script>
 
@@ -80,7 +79,7 @@ onBeforeUnmount(() => {
           :class="{ 'active-menu': generalStore.drawer }"
           viewBox="0 0 100 100"
           width="60"
-          @click="generalStore.toggle()"
+          @click="generalStore.toggleDrawer()"
         >
           <path
             class="line top"
@@ -93,9 +92,12 @@ onBeforeUnmount(() => {
           />
         </svg>
       </div>
-      <Menus class="hidden lg:block" />
+      <div class="hidden lg:block">
+        <Menus />
+      </div>
       <div
         v-if="generalStore.drawer"
+        ref="navMenu"
         :class="{
           'navbar-menu-open': generalStore.drawer,
           'navbar-menu-close': !generalStore.drawer,

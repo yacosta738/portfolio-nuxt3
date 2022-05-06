@@ -108,7 +108,7 @@ const actions = {
   },
   removeMenu(menu: Menu) {
     this.menus = this.menus.filter(
-      m => m.name !== menu.name && m.url !== menu.url
+      (m: Menu) => m.name !== menu.name && m.hash !== menu.hash
     );
   },
 };
