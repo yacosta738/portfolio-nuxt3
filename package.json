@@ -31,7 +31,7 @@
   "devDependencies": {
     "@nuxt/kit": "3.0.0-rc.1",
     "@nuxt/schema": "3.0.0-rc.1",
-    "@nuxt/vite-builder": "3.0.0-rc.1",
+    "@nuxt/vite-builder": "3.0.0-rc.2",
     "@nuxtjs/tailwindcss": "^5.0.4",
     "@pinia/nuxt": "^0.1.9",
     "@sxzz/eslint-config": "^2.1.1",
