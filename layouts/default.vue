@@ -19,7 +19,7 @@ const theme = computed(() => {
     class="content-wrapper bg-background-primary font-sans text-light-slate leading-normal flex flex-col min-h-screen"
     :class="theme"
   >
-    <div id="page-wrapper">
+    <div id="page-wrapper" :class="{ 'filter blur': generalStore.searchModal }">
       <Navbar />
       <div class="flex flex-wrap flex-col md:flex-row justify-around">
         <transition name="fade" appear>

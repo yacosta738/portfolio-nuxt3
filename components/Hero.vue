@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { email } from '../models/configuration';
-import { typed } from '../util/utilities';
-import { useLocal } from '../composables/locale';
+import { email } from '~/models/configuration';
+import { typed } from '~/util/utilities';
+import { useLocal } from '~/composables/locale';
 
 const { t } = useLocal();
 
@@ -30,16 +30,25 @@ const myEmail = email;
       <h1 class="text-base text-green-500 font-mono my-2 md:my-6 font-normal">
         {{ $t('welcome') }}
       </h1>
-      <h2 id="generalName" class="text-5xl md:text-8xl">{{ $t('name') }}</h2>
-      <h3 id="phrase" class="text-4xl md:text-7xl md:my-2 text-gray-500">
+      <h2 id="generalName" class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl">
+        {{ $t('name') }}
+      </h2>
+      <h3
+        id="phrase"
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl md:my-2 text-gray-500"
+      >
         {{ $t('slogan') }}
       </h3>
       <p class="my-4 max-w-none md:max-w-2xl">
         {{ $t('my-self') }}
       </p>
-      <a :href="`mailto:${myEmail}`" class="big-button my-10">
-        {{ $t('get-in-touch') }}
-      </a>
+      <footer
+        class="container mx-auto flex flex-col items-center md:items-start"
+      >
+        <a :href="`mailto:${myEmail}`" class="big-button my-10">
+          {{ $t('get-in-touch') }}
+        </a>
+      </footer>
     </div>
   </section>
 </template>
