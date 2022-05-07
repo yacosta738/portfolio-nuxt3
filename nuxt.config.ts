@@ -8,14 +8,14 @@ export default defineNuxtConfig({
   },
   publicRuntimeConfig: {
     BLOG_PAGE_ID: process.env.BLOG_PAGE_ID,
+    JOBS_PAGE_ID: process.env.JOBS_PAGE_ID,
     NOTION_URL: process.env.NOTION_URL,
   },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', ["vue3-notion/nuxt", { css: true }]],
   buildModules: [
     '@vueuse/nuxt',
     '@pinia/nuxt',
     '@intlify/nuxt3',
-    'vue3-notion/nuxt',
   ],
   css: ['@/assets/styles/main.css', 'vue3-notion/dist/style.css'],
   vueuse: {

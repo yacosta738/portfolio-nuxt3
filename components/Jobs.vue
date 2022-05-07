@@ -1,72 +1,21 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
 import { useJobStore } from '../store';
-import Job from '../models/job';
 import { formatDate, inlineLinks } from '../util/utilities';
 
-const store = useJobStore();
+const jobStore = useJobStore();
 
 const activeTabId = computed<number>({
   get() {
-    return store.getActiveTabId;
+    return jobStore.getActiveTabId;
   },
   set(value) {
-    console.log('set', value);
-    store.setJobActiveTabId(value);
+    jobStore.setJobActiveTabId(value);
   },
 });
-const jobs = computed<Job[]>(() => [
-  new Job(
-    'gf1fgg121121',
-    'en',
-    'Software Engineer',
-    '02-01-2021',
-    null,
-    'Google',
-    'USA',
-    'https://www.google.com',
-    `
-            <p>
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium, alias, consequuntur cum cupiditate eius est excepturi facere illo ipsa iusto maiores non quisquam quod sed vel veritatis vitae voluptatum.
-            </p>
-            `
-  ),
-  new Job(
-    'jjjjjhhgy766',
-    'en',
-    'Software Engineer',
-    '02-01-2019',
-    '02-01-2021',
-    'Amazon',
-    'USA',
-    'https://www.amazon.com',
-    `
-            <p>
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium, alias, consequuntur cum cupiditate eius est excepturi facere illo ipsa iusto maiores non quisquam quod sed vel veritatis vitae voluptatum.
-            </p>
-            `
-  ),
-  new Job(
-    'ijfdesd55',
-    'en',
-    'Software Engineer',
-    '02-01-2018',
-    '02-01-2019',
-    'Facebook',
-    'USA',
-    'https://www.facebook.com',
-    `
-            <p>
-             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus accusantium, alias, consequuntur cum cupiditate eius est excepturi facere illo ipsa iusto maiores non quisquam quod sed vel veritatis vitae voluptatum.
-            </p>
-            `
-  ),
-]);
-
-const isSmallScreen = computed(() => {
-  // TODO: use media queries or vue-mq
-  return false;
-});
+const breakpoints = useBreakpoints(breakpointsTailwind);
+const isSmallScreen = breakpoints.sm;
 
 const range = (job, dateFormat = 'MMMM, yyyy', locale = 'en'): string => {
   return `${formatDate(job.startDate, dateFormat, locale)} - ${
@@ -75,6 +24,9 @@ const range = (job, dateFormat = 'MMMM, yyyy', locale = 'en'): string => {
 };
 
 onMounted(() => {
+  if (jobStore.jobs.length === 0) {
+    jobStore.fetchJobs();
+  }
   inlineLinks('styled-tab-content');
 });
 </script>
@@ -84,7 +36,7 @@ onMounted(() => {
     <h2 class="numbered-heading">Where I've Worked</h2>
     <div class="inner">
       <ul class="styled-tab-list" role="tablist" aria-label="Job tabs">
-        <li v-for="(job, i) in jobs" :key="job.id">
+        <li v-for="(job, i) in jobStore.getJobs" :key="job.id">
           <button
             :id="`tab-${i}`"
             class="styled-tab-button"
@@ -97,10 +49,10 @@ onMounted(() => {
             @keyup.up.prevent.stop="
               activeTabId - 1 >= 0
                 ? (activeTabId -= 1)
-                : (activeTabId = jobs.length - 1)
+                : (activeTabId = jobStore.getJobs.length - 1)
             "
             @keyup.down.prevent.stop="
-              activeTabId + 1 >= jobs.length
+              activeTabId + 1 >= jobStore.getJobs.length
                 ? (activeTabId = 0)
                 : (activeTabId += 1)
             "
@@ -120,7 +72,7 @@ onMounted(() => {
       <transition name="fade" mode="out-in">
         <div>
           <div
-            v-for="(job, i) in jobs"
+            v-for="(job, i) in jobStore.getJobs"
             :id="`panel-${i}`"
             :key="job.id"
             class="styled-tab-content"
@@ -142,7 +94,12 @@ onMounted(() => {
             <p class="range">
               {{ range(job) }}
             </p>
-            <div v-html="job.content" />
+            <NotionRenderer
+              v-if="job.content"
+              :block-map="job.content"
+              prism
+              katex
+            />
           </div>
         </div>
       </transition>

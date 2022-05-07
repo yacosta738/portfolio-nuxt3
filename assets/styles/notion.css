@@ -1,0 +1,16 @@
+@import "./theme.css";
+
+.notion {
+  box-sizing: border-box;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--fg-color);
+  caret-color: var(--fg-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif,
+  "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.notion *::selection {
+  background-color: var(--slate);
+  color: var(--lightest-slate);
+}
