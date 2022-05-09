@@ -33,6 +33,9 @@ describe('Jobs Store', () => {
   test('test getters', () => {
     expect(store.getActiveTabId).toBeDefined();
     expect(store.getActiveTabId).toEqual(0);
+    // Jobs
+    expect(store.getJobs).toBeDefined();
+    expect(store.getJobs).toEqual([]);
   });
 
   test('set job active tab id', () => {

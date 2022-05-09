@@ -1,6 +1,6 @@
 
 <h2 align="center">
-Nuxt3 + Apollo Starter
+Yuniel Acosta - Software Engineer
 </h2><br>
 
 ## Preview
@@ -8,6 +8,8 @@ Nuxt3 + Apollo Starter
 [Vercel](https://nuxt3-apollo-starter.vercel.app/)
 [Server](https://ssr-cdn-node.youbefashion.com/)
 [Serverless(aws lambda)](https://ssr-sls.youbefashion.com/)
+
+![](screenshots/demo.png)
 ## Features
 
 - 💚 [Nuxt 3](https://v3.nuxtjs.org) - SSR, ESR, File-based routing, components auto importing, modules, etc.

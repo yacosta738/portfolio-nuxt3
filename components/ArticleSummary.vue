@@ -16,7 +16,7 @@
         v-if="article.cover && article.cover.length > 0"
         :alt="article.cover[0].name"
         class="object-cover md:w-1/3 border border-green-500 md:mr-5"
-        src="https://bunkerdb.com/blog/wp-content/uploads/2020/07/Low-code-No-code.jpg"
+        :src="article.cover[0].url"
       />
       <div class="text-center md:text-left mt-5 md:mt-0">
         {{ article.summary }}
@@ -30,12 +30,11 @@
 </template>
 
 <script setup lang="ts">
-import 'reflect-metadata';
-import Article from '../models/article';
+import IArticle from '../models/article';
 
 defineProps({
   article: {
-    type: Article,
+    type: IArticle,
     required: true,
   },
   hidePostHeaderInSmallScreen: {

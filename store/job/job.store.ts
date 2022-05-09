@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia';
-import type { IJob } from '~/models/job';
-import { useNuxtApp, useRuntimeConfig } from '#app';
-import Job from '~/models/job';
+import Job from '../../models/job';
+import type { IJob } from '../../models/job';
 
 const jobActiveTabIdKey = 'jobActiveTabId';
 const getActiveTabId = (): number => {

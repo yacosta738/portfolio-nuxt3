@@ -64,10 +64,6 @@ describe('Article Store', () => {
   test('get articles', () => {
     expect(store.getArticles).toMatchObject([]);
     store.setArticles(data.articles);
-    console.log({
-      Expected: store.getArticles.length,
-      Received: data.articles.length,
-    });
     expect(store.getArticles).toMatchObject(
       data.articles.filter(article => article.published)
     );

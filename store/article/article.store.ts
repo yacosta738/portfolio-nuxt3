@@ -4,7 +4,6 @@ import Article from '../../models/article';
 import type { IArticle } from '../../models/article';
 import type { ITag } from '../../models/tag';
 import type { ICategory } from '../../models/category';
-import { useNuxtApp, useRuntimeConfig } from '#app';
 
 export interface IArticleStore {
   articles: IArticle[];

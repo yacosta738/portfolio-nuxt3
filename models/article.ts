@@ -2,7 +2,7 @@ import type { IPerson } from './person';
 import type Person from './person';
 import type { Image } from './image';
 
-export abstract class IArticle {
+export interface IArticle {
   id?: string;
   title?: string;
   date?: string;

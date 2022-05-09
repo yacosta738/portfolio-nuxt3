@@ -10,7 +10,7 @@ definePageMeta({
       <Hero />
       <About />
       <Jobs />
-      <!--    <projects/>-->
+      <Projects />
       <!--    <last-articles/>-->
       <!--    <Contact/>-->
     </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { useArticleStore } from '../../store';
+import { useArticleStore } from '~/store';
 
 definePageMeta({
   title: 'Blog',
@@ -10,20 +10,9 @@ definePageMeta({
 const articlesStore = useArticleStore();
 
 onMounted(async () => {
-  console.log(
-    '----------------------------------- mounted -----------------------------------'
-  );
   if (articlesStore.articles.length === 0) {
     await articlesStore.fetchArticles();
-    console.log(
-      '----------------------------------- articles fetched -----------------------------------'
-    );
-  } else {
-    console.log('articles already fetched');
   }
-  console.log(
-    '----------------------------------- end mounted -----------------------------------'
-  );
 });
 
 const currentPage = computed({
