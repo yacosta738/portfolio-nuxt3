@@ -26,5 +26,5 @@ jobs:
       - name: linter and fix
         run: npm run lint:fix
 
-      - name: Test
-        run: npm run test
+      - name: Build and test
+        run: npm run build && npm run test
