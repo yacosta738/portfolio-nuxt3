@@ -1,15 +1,20 @@
 export interface ITech {
-  id?: string;
-  name?: string;
-  icon?: { type: string; value: string } | string;
+  id: string;
+  title?: string;
+  icon?: string;
   url?: string;
 }
 
 export default class Tech implements ITech {
-  constructor(
-    public id?: string,
-    public name?: string,
-    public icon?: { type: string; value: string } | string,
-    public url?: string
-  ) {}
+  id: string;
+  title?: string;
+  icon?: string;
+  url?: string;
+
+  constructor(tech: ITech) {
+    this.id = tech.id;
+    this.title = tech.title;
+    this.icon = tech.icon;
+    this.url = tech.url;
+  }
 }

@@ -6,11 +6,11 @@ definePageMeta({
 
 <template>
   <NuxtLayout name="default">
-    <div>
+    <div class="container mx-auto px-4">
       <Hero />
       <About />
       <Jobs />
-      <!--    <projects/>-->
+      <Projects />
       <!--    <last-articles/>-->
       <!--    <Contact/>-->
     </div>

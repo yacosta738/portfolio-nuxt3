@@ -1,11 +1,9 @@
 import { defineStore } from 'pinia';
 import { compareAsc } from 'date-fns';
-import { getPageTable } from 'vue3-notion';
 import Article from '../../models/article';
 import type { IArticle } from '../../models/article';
 import type { ITag } from '../../models/tag';
 import type { ICategory } from '../../models/category';
-import { useRuntimeConfig } from '#app';
 
 export interface IArticleStore {
   articles: IArticle[];
@@ -77,7 +75,6 @@ const getters = {
   getArticleBySlug(
     state: IArticleStore
   ): (slug: string) => IArticle | undefined {
-    console.log('getArticleBySlug');
     return (slug: string) => {
       return state.articles.find(article => article.slug === slug);
     };
@@ -90,8 +87,9 @@ const actions = {
   },
   async fetchArticles() {
     const config = useRuntimeConfig();
+    const { $notion } = useNuxtApp();
     const { data } = await useAsyncData('notion', () =>
-      getPageTable(config.BLOG_PAGE_ID, config.NOTION_URL)
+      $notion.getPageTable(config.BLOG_PAGE_ID, config.NOTION_URL)
     );
 
     if (data.value) {

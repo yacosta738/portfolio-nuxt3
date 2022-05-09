@@ -1,10 +1,10 @@
 {
   "name": "portfolio",
-  "description": "Portfolio and blog of Yuniel Acosta Pérez",
   "version": "0.0.1",
-  "author": "Yuniel Acosta Pérez",
   "private": true,
   "packageManager": "yarn@3.2.0",
+  "description": "Portfolio and blog of Yuniel Acosta Pérez",
+  "author": "Yuniel Acosta Pérez",
   "scripts": {
     "build": "nuxi build",
     "build:sls": "cross-env NITRO_PRESET=lambda nuxi build",
@@ -25,7 +25,6 @@
     "fuse.js": "^6.6.1",
     "ityped": "^1.0.3",
     "pinia": "^2.0.14",
-    "reflect-metadata": "^0.1.13",
     "type-graphql": "^1.1.1",
     "unenv": "^0.5.1"
   },

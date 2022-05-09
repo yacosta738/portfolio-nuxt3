@@ -11,7 +11,11 @@
             class="my-2 text-light-slate font-mono text-3xl whitespace-nowrap mx-1"
           >
             <a :href="social.url" target="_blank">
-              <SvgIcon :name="social.name.toLowerCase()" height="30" width="30" />
+              <SvgIcon
+                :name="social.name.toLowerCase()"
+                height="30"
+                width="30"
+              />
             </a>
           </li>
         </ul>

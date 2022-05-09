@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import { useGeneralStore } from '../store';
 import { email } from '../models/configuration';
 
 const store = useGeneralStore();
 const myEmail = email;
-
-onMounted(() => {
-  console.log('Email mounted');
-  console.log(store);
-});
 </script>
 
 <template>

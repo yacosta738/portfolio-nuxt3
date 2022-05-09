@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useGeneralStore } from '../store';
-import { socialMedia } from '../models/configuration';
+import { useGeneralStore } from '~/store';
+import { socialMedia } from '~/models/configuration';
 
 const store = useGeneralStore();
 const sMedia = socialMedia;
@@ -10,7 +10,7 @@ const sMedia = socialMedia;
   <Side :show="store.showSide" orientation="left">
     <ul class="social-links">
       <li v-for="social in sMedia" :key="social.name">
-        <a :href="social.url" target="_blank" class='my-1.5'>
+        <a :href="social.url" target="_blank" class="my-1.5">
           <SvgIcon :name="social.name.toLowerCase()" />
         </a>
       </li>
