@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useArticleStore } from '../../store';
-import type { ITag } from '../../models/tag';
+import type { ITag } from '~/models/tag';
+import { useArticleStore } from '~/store';
 const articlesStore = useArticleStore();
 
 const allTags = computed(() => articlesStore.getAllTags);
-
-const article = computed(() =>
-  articlesStore.getArticleBySlug('graphql-in-django-an-overview')
-);
 
 const totalCount = computed(() => allTags.value.length);
 

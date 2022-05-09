@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { navMenus } from '../../models/configuration';
 import type Menu from '../../models/menu';
-
+/* eslint no-console: ["error", { allow: ["info", "warn", "error"] }] */
 const DARK = 'dark';
 const LIGHT = 'light';
 
@@ -57,7 +57,7 @@ const actions = {
   toggleTheme() {
     const isDark = this.theme === DARK;
     const message = isDark ? '🌙 Setting dark mode' : '🌞 Setting light mode';
-    console.log(message);
+    console.info(message);
     const newTheme = isDark ? LIGHT : DARK;
 
     if (process.client) localStorage.setItem('theme', newTheme);

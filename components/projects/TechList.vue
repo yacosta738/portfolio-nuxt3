@@ -7,7 +7,12 @@
       :class="classLinks"
     >
       <a v-if="tech.url" class="flex" :href="tech.url">
-        <SvgIcon v-if="showIcon && tech.icon" :name="tech.icon.toLowerCase()" height="15" width="15" />
+        <SvgIcon
+          v-if="showIcon && tech.icon"
+          :name="tech.icon.toLowerCase()"
+          height="15"
+          width="15"
+        />
         <span class="mx-1">{{ tech.title }}</span>
       </a>
       <span v-else>{{ tech.title }}</span>

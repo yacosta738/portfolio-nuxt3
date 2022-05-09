@@ -19,7 +19,7 @@
       <div class="styled-pic">
         <div class="wrapper">
           <img
-            :src="yacosta.image ? yacosta.image : '/me.png'"
+            :src="me.image ? me.image : '/me.png'"
             alt="Yuniel Acosta Pérez"
             class="img"
           />
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
-import { inlineLinks, markdownfy, yearsOfExperience } from '../util/utilities';
+import { inlineLinks } from '~/util/utilities';
 
 const skills: string[] = [
   'TypeScript',
@@ -52,7 +52,7 @@ onMounted(() => {
   setInlineLink();
 });
 
-const yacosta = computed(() => {
+const me = computed(() => {
   return {
     image: '/me.png',
     name: 'Yuniel Acosta Pérez',
@@ -62,14 +62,6 @@ const yacosta = computed(() => {
     phone: '+52 1 (614) 827-8982',
   };
 });
-
-const markdownfyString = (str: string): string => {
-  return markdownfy(str);
-};
-
-const yearsExperience = (text: string): string => {
-  return yearsOfExperience(text);
-};
 </script>
 
 <style scoped lang="scss">

@@ -1,10 +1,10 @@
 {
   "name": "portfolio",
-  "description": "Portfolio and blog of Yuniel Acosta Pérez",
   "version": "0.0.1",
-  "author": "Yuniel Acosta Pérez",
   "private": true,
   "packageManager": "yarn@3.2.0",
+  "description": "Portfolio and blog of Yuniel Acosta Pérez",
+  "author": "Yuniel Acosta Pérez",
   "scripts": {
     "build": "nuxi build",
     "build:sls": "cross-env NITRO_PRESET=lambda nuxi build",
