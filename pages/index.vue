@@ -7,12 +7,12 @@ definePageMeta({
 <template>
   <NuxtLayout name="default">
     <div class="container mx-auto px-4">
-      <Hero />
-      <About />
-      <Jobs />
-      <Projects />
+      <SectionHero />
+      <SectionAbout />
+      <SectionJobs />
+      <SectionProjects />
       <!--    <last-articles/>-->
-      <!--    <Contact/>-->
+      <SectionContact />
     </div>
   </NuxtLayout>
 </template>

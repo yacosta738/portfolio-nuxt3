@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     PROJECTS_PAGE_ID: process.env.PROJECTS_PAGE_ID,
     TECH_PAGE_ID: process.env.TECH_PAGE_ID,
     NOTION_URL: process.env.NOTION_URL,
+    FORMSPREE: process.env.FORMSPREE,
   },
   modules: ['@nuxtjs/tailwindcss', ['vue3-notion/nuxt', { css: true }]],
   buildModules: ['@vueuse/nuxt', '@pinia/nuxt', '@intlify/nuxt3'],
