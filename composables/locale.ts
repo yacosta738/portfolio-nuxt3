@@ -24,7 +24,7 @@ export function useLocal() {
         }
       }
     } else {
-      setLocale(currentLocale.value);
+      setLocale(currentLocale.value.split('-')[0]);
     }
   };
 

@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useArticleStore, useGeneralStore } from '../../store';
-import type { IArticle } from '../../models/article';
+import type { IArticle } from '~/models/article';
+import { useArticleStore } from '~/store';
 
 const articlesStore = useArticleStore();
-const generalStore = useGeneralStore();
 
 const recentPosts = computed<IArticle[]>(() => {
-  return articlesStore.getLatestArticles(5);
+  return articlesStore
+    .getLatestArticles(6)
+    .filter(article => article.id !== articlesStore.currentArticle.id);
 });
 </script>
 
 <template>
-  <WidgetWrapper v-if="generalStore.getPostId !== -1" title="Recent Post">
+  <WidgetWrapper v-if="articlesStore.getCurrentArticle" title="Recent Post">
     <ul class="flex flex-col relative list-none p-0 my-4">
       <li
         v-for="post in recentPosts"

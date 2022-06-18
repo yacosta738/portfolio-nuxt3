@@ -4,7 +4,7 @@
       class="text-3xl md:text-4xl text-center md:text-left font-bold tracking-wider"
     >
       <NuxtLink
-        :to="{ path: `/blog/${article.date}/${article.slug}` }"
+        :to="{ path: `/blog/${article.id}` }"
         class="inline-link"
       >
         {{ article.title }}
@@ -20,7 +20,7 @@
       />
       <div class="text-center md:text-left mt-5 md:mt-0">
         {{ article.summary }}
-        <NuxtLink :to="article.slug" class="font-bold uppercase inline-link">
+        <NuxtLink :to="article.id" class="font-bold uppercase inline-link">
           Read
         </NuxtLink>
       </div>

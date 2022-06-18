@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useGeneralStore } from '../store';
+import { computed, onMounted } from 'vue';
+import { useArticleStore, useGeneralStore } from '~/store';
 
 const generalStore = useGeneralStore();
-defineProps({
-  aside: {
-    type: Boolean,
-    default: false,
-  },
-});
+const articlesStore = useArticleStore();
 const theme = computed(() => {
   return generalStore.theme;
+});
+onMounted(async () => {
+  if (articlesStore.articles?.length === 0) {
+    await articlesStore.fetchArticles();
+  }
 });
 </script>
 
@@ -32,7 +32,7 @@ const theme = computed(() => {
             <ScrollTop />
           </main>
         </transition>
-        <transition v-if="aside" name="fade" mode="out-in" appear>
+        <transition name="fade" mode="out-in" appear>
           <aside
             id="sidebar"
             class="w-auto md:w-80 mt-2 md:mr-80 md:mt-20 lg:mt-15"

@@ -29,7 +29,6 @@ describe('General Store', () => {
 
   test('sets the initial state', () => {
     expect(store.theme).toEqual('dark');
-    expect(store.postId).toEqual(-1);
     expect(store.drawer).toEqual(false);
     expect(store.showNavbar).toEqual(true);
     expect(store.showSide).toEqual(true);
@@ -43,7 +42,6 @@ describe('General Store', () => {
   test('test getters', () => {
     expect(store.getThemeClass).toBeDefined();
     expect(store.getTheme).toBeDefined();
-    expect(store.getPostId).toBeDefined();
     expect(store.getDrawer).toBeDefined();
     expect(store.getShowNavbar).toBeDefined();
     expect(store.getShowSide).toBeDefined();
@@ -55,7 +53,6 @@ describe('General Store', () => {
 
     expect(store.getThemeClass).toEqual('dark');
     expect(store.getTheme).toEqual('dark');
-    expect(store.getPostId).toEqual(-1);
     expect(store.getDrawer).toEqual(false);
     expect(store.getShowNavbar).toEqual(true);
     expect(store.getShowSide).toEqual(true);
@@ -69,11 +66,6 @@ describe('General Store', () => {
   test('sets the theme', () => {
     store.toggleTheme();
     expect(store.theme).toEqual('light');
-  });
-
-  test('sets the postId', () => {
-    store.changePostId(1);
-    expect(store.postId).toEqual(1);
   });
 
   test('sets the drawer', () => {

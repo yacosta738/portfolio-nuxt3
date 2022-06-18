@@ -16,7 +16,6 @@ const getNavMenus = (): Menu[] => navMenus || [];
 
 export interface IGeneralStore {
   theme: string;
-  postId: number;
   drawer: boolean;
   showNavbar: boolean;
   showSide: boolean;
@@ -28,7 +27,6 @@ export interface IGeneralStore {
 }
 const state = (): IGeneralStore => ({
   theme: getTheme(),
-  postId: -1,
   drawer: false,
   showNavbar: true,
   showSide: true,
@@ -43,7 +41,6 @@ const getters = {
   getThemeClass: (state: IGeneralStore) =>
     state.theme === DARK ? 'dark' : 'light',
   getTheme: (state: IGeneralStore) => state.theme,
-  getPostId: (state: IGeneralStore) => state.postId,
   getDrawer: (state: IGeneralStore) => state.drawer,
   getShowNavbar: (state: IGeneralStore) => state.showNavbar,
   getShowSide: (state: IGeneralStore) => state.showSide,
@@ -69,9 +66,6 @@ const actions = {
       document.body.classList.add(classToAdd);
       document.body.classList.remove(classToRemove);
     }
-  },
-  changePostId(id) {
-    this.postId = id;
   },
   toggleDrawer() {
     this.drawer = !this.drawer;
@@ -102,14 +96,6 @@ const actions = {
   },
   updateMenus(menus: Menu[]) {
     this.menus = menus;
-  },
-  addMenu(menu: Menu) {
-    this.menus.push(menu);
-  },
-  removeMenu(menu: Menu) {
-    this.menus = this.menus.filter(
-      (m: Menu) => m.name !== menu.name && m.hash !== menu.hash
-    );
   },
 };
 

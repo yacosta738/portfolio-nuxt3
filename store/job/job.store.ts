@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
-import Job from '../../models/job';
 import type { IJob } from '../../models/job';
+import { useLocal } from '~/composables/locale';
+import { queryContent } from '#imports';
 
 const jobActiveTabIdKey = 'jobActiveTabId';
 const getActiveTabId = (): number => {
@@ -22,18 +23,28 @@ const state = (): IJobStore => ({
   jobActiveTabId: getActiveTabId(),
 });
 
+/**
+ * Get all jobs
+ */
+function getAllJobs() {
+  const { locale } = useLocal();
+  return this.jobs
+  .filter(
+    (job: IJob) => job.published && job.lang === locale.value.split('-')[0],
+  )
+  .sort((a: IJob, b: IJob) => {
+    if (a.startDate > b.startDate) return -1;
+    if (a.startDate < b.startDate) return 1;
+    return 0;
+  });
+}
+
 const getters = {
   getActiveTabId(): number {
     return this.jobActiveTabId;
   },
   getJobs(): IJob[] {
-    return this.jobs
-      .filter((job: IJob) => job.published && job.lang === 'en')
-      .sort((a: IJob, b: IJob) => {
-        if (a.startDate > b.startDate) return -1;
-        if (a.startDate < b.startDate) return 1;
-        return 0;
-      });
+    return getAllJobs.call(this);
   },
 };
 
@@ -44,22 +55,14 @@ const actions = {
       localStorage.setItem(jobActiveTabIdKey, activeTabId.toString());
   },
   async fetchJobs() {
-    const config = useRuntimeConfig();
-    const { $notion } = useNuxtApp();
-    const data = await $notion.getPageTable(
-      config.JOBS_PAGE_ID,
-      config.NOTION_URL
-    );
-    if (data) {
-      this.jobs = (data as Array<any>)
-        .filter(job => job.published)
-        .map(job => new Job(job));
-      this.jobs.forEach(job => {
-        $notion.getPageBlocks(job.id, config.NOTION_URL).then(block => {
-          job.content = block;
-        });
-      });
-    }
+  const jobsContent = await queryContent('jobs')/*.where({ published: { $eq: true } })*/.find();
+  console.log("Content: ", jobsContent);
+  this.jobs = jobsContent.map((job: any) => ({
+    ...job,
+    startDate: new Date(job.startDate),
+    endDate: new Date(job.endDate),
+  }));
+  console.log(this.jobs);
   },
 };
 

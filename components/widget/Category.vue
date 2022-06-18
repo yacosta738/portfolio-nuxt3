@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useArticleStore } from '../../store';
+import { useArticleStore } from '~/store';
 
 const articlesStore = useArticleStore();
 

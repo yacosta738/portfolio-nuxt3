@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { useArticleStore } from '~/store';
+import { definePageMeta } from '#imports';
 
 definePageMeta({
   title: 'Blog',

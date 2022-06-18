@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     NOTION_URL: process.env.NOTION_URL,
     FORMSPREE: process.env.FORMSPREE,
   },
-  modules: ['@nuxtjs/tailwindcss', ['vue3-notion/nuxt', { css: true }]],
+  modules: ['@nuxtjs/tailwindcss', ['vue3-notion/nuxt', { css: true }], '@nuxt/content'],
   buildModules: ['@vueuse/nuxt', '@pinia/nuxt', '@intlify/nuxt3'],
   css: ['@/assets/styles/main.css', 'vue3-notion/dist/style.css'],
   vueuse: {

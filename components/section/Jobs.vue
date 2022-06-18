@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue';
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core';
-import { useJobStore } from '../../store';
-import { formatDate, inlineLinks } from '../../util/utilities';
+import { useJobStore } from '~/store';
+import { formatDate, inlineLinks } from '~/util/utilities';
 
 const jobStore = useJobStore();
 

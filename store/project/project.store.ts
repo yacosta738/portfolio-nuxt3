@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import Project from '../../models/project';
 import Tech from '../../models/tech';
 import type { IProject } from '../../models/project';
+import { useLocal } from '~/composables/locale';
 
 export interface IProjectStore {
   projects: IProject[];
@@ -11,47 +12,37 @@ const state = (): IProjectStore => ({
   projects: [],
 });
 
+function getAllProjects() {
+  const { locale } = useLocal();
+  return this.projects
+    .filter(
+      project =>
+        project.published && project.lang === locale.value.split('-')[0]
+    )
+    .sort((a, b) => {
+      if (a.startDate > b.startDate) return -1;
+      if (a.startDate < b.startDate) return 1;
+      return 0;
+    });
+}
+
 const getters = {
   /**
    * Get all projects
    * @returns {IProject[]}
    */
   getProjects(): IProject[] {
-    return this.projects
-      .filter(project => project.published && project.lang === 'en')
-      .sort((a, b) => {
-        if (a.startDate > b.startDate) return -1;
-        if (a.startDate < b.startDate) return 1;
-        return 0;
-      });
+    return getAllProjects.call(this);
   },
   /**
    * Get the featured projects
    * @returns {IProject[]}
    */
   getFeaturedProjects(): IProject[] {
-    return this.projects
-      .filter(
-        project =>
-          project.published && project.lang === 'en' && project.featured
-      )
-      .sort((a, b) => {
-        if (a.startDate > b.startDate) return -1;
-        if (a.startDate < b.startDate) return 1;
-        return 0;
-      });
+    return getAllProjects.call(this).filter(project => project.featured);
   },
   getCommonProjects(): IProject[] {
-    return this.projects
-      .filter(
-        (project: IProject) =>
-          project.published && project.lang === 'en' && project.showInProjects
-      )
-      .sort((a, b) => {
-        if (a.startDate > b.startDate) return -1;
-        if (a.startDate < b.startDate) return 1;
-        return 0;
-      });
+    return getAllProjects.call(this).filter(project => project.showInProjects);
   },
 };
 
